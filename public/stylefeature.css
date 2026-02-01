@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700,900&display=swap');
+
+:root {
+  --primary: #6a5eff;
+  --secondary: #4a3aff;
+  --accent: #43e97b;
+  --yellow: #ffd200;
+  --text: #232946;
+  --bg: #f8f9fa;
+  --white: #fff;
+  --shadow: 0 8px 32px rgba(74, 58, 255, 0.09);
+  --radius: 18px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4a3aff 0%, #6a5eff 30%, #43e97b 100%);
+  background-attachment: fixed;
+  color: var(--text);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.dashboard {
+  padding: 48px 20px 20px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.assessment-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 38px 32px 32px 32px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  border-left: 7px solid var(--primary);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.assessment-title {
+  color: var(--primary);
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.assessment-desc {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 30px;
+}
+
+.assessment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.assessment-btn {
+  padding: 14px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--primary) 60%, var(--accent) 100%);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 5px var(--primary)22;
+}
+.assessment-btn:hover {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+  box-shadow: 0 2px 10px var(--accent)40;
+}
+
+@media (max-width: 600px) {
+  .assessment-card { max-width: 98vw; padding: 18px 6vw; }
+  .dashboard { padding: 18px 2vw 8px 2vw; }
+}
+
+/* Google Fonts Import (add in <head> of your HTML too) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+/* Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Montserrat', 'Poppins', Arial, sans-serif;
+  background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+  color: #232946;
+  min-height: 100vh;
+  letter-spacing: 0.03em;
+}
+
+/* Navbar */
+.navbar {
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.07);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid rgba(255,255,255,0.18);
+}
+.logo {
+  font-weight: 900;
+  font-size: 2.1rem;
+  color: #7f5af0;
+  letter-spacing: 2px;
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 0 2px 8px #d1d9ff66;
+}
+.nav-links {
+  display: flex;
+  gap: 22px;
+  list-style: none;
+}
+.nav-links li a {
+  color: #7f5af0;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 9px 18px;
+  border-radius: 10px;
+  transition: background 0.25s, color 0.25s;
+  font-size: 1.08rem;
+}
+.nav-links li a:hover {
+  background: #7f5af0;
+  color: #fff;
+}
+.auth-btns .login-btn {
+  border: 2px solid #7f5af0;
+  padding: 6px 18px;
+  background: transparent;
+  border-radius: 10px;
+  color: #7f5af0;
+  font-weight: 700;
+  transition: background 0.3s, color 0.3s;
+}
+.auth-btns .login-btn:hover {
+  background: #7f5af0;
+  color: #fff;
+}
+.auth-btns .signup-btn {
+  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+  color: #232946;
+  padding: 8px 22px;
+  font-weight: 900;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px #43e97b33;
+  border: none;
+  margin-left: 4px;
+  transition: box-shadow 0.3s, background 0.3s, color 0.3s;
+}
+.auth-btns .signup-btn:hover {
+  background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
+  color: #fff;
+  box-shadow: 0 8px 32px #43e97b55;
+}
+
+/* Mobile menu icon */
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #7f5af0;
+}
+

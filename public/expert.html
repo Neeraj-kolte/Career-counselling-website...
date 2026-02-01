@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Counseling</title>
+</head>
+<body>
+    <h1>Choose Your Career Expert</h1>
+
+    <!-- Dropdown to select an expert -->
+    <select id="expertSelect">
+        <option value="">Select an Expert</option>
+    </select>
+
+    <!-- Button to save the selection -->
+    <button onclick="selectExpert()">Select Expert</button>
+
+    <script>
+        // Fetch the list of experts when the page loads
+        window.onload = async function() {
+            const response = await fetch('http://localhost:3000/experts');  // Call backend to get experts
+            const experts = await response.json();  // Parse response as JSON
+            const expertSelect = document.getElementById('expertSelect');
+            
+            // Populate dropdown with expert names
+            experts.forEach(expert => {
+                const option = document.createElement('option');
+                option.value = expert._id;
+                option.textContent = expert.name;
+                expertSelect.appendChild(option);
+            });
+        };
+
+        // Function to handle expert selection and save it
+        async function selectExpert() {
+            const expertId = document.getElementById('expertSelect').value;  // Get selected expert ID
+            if (!expertId) {
+                alert('Please select an expert.');
+                return;
+            }
+
+            const userId = '60c72b2f9b1d8a3f4f0f6c60';  // Example user ID, replace with real user ID
+
+            const response = await fetch('http://localhost:3000/select-expert', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId: userId,  // User ID needs to be dynamically set
+                    expertId: expertId,
+                }),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert(result.message);  // Show success message
+            } else {
+                alert(result.error);  // Show error message if something went wrong
+            }
+        }
+    </script>
+</body>
+</html>

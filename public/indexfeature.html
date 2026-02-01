@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Career Assessment Start</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylefeature.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">CareerCounselling</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="indexfeature.html">Students</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li class="auth-btns" id="loginNav">
+          <a href="login.html" class="login-btn">Login</a>
+        </li>
+        <li class="auth-btns" id="signupNav">
+          <a href="register.html" class="signup-btn">Sign Up</a>
+        </li>
+      </ul>
+      <div class="menu-icon" id="menuToggle">☰</div>
+    </nav>
+
+    <div class="dashboard">
+      <div id="assessmentStart" class="assessment-card">
+        <h2 class="assessment-title">Career Assessment</h2>
+        <p class="assessment-desc">
+          Select your current status to get the best guidance for your future:
+        </p>
+        <div class="assessment-options">
+          <button class="assessment-btn" onclick="selectStudentType('10th')">
+            I am a 10th Student
+          </button>
+          <button class="assessment-btn" onclick="selectStudentType('12th')">
+            I am a 12th Student
+          </button>
+          <button class="assessment-btn" onclick="selectStudentType('dropout')">
+            I am a Dropout
+          </button>
+        </div>
+      </div>
+      <div id="assessmentFlow"></div>
+    </div>
+    <script src="mainfeature.js"></script>
+  </body>
+</html>

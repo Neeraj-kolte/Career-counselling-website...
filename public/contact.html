@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | CareerCounselling</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(135deg, #6a5eff 0%, #43e97b 100%);
+        font-family: "Poppins", Arial, sans-serif;
+        margin: 0;
+        min-height: 100vh;
+        color: #232946;
+      }
+      /* Google Fonts Import (add in <head> of your HTML too) */
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap");
+
+      /* Reset & Base */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Montserrat", "Poppins", Arial, sans-serif;
+        background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+        color: #232946;
+        min-height: 100vh;
+        letter-spacing: 0.03em;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.18);
+      }
+      .logo {
+        font-weight: 900;
+        font-size: 2.1rem;
+        color: #7f5af0;
+        letter-spacing: 2px;
+        font-family: "Montserrat", sans-serif;
+        text-shadow: 0 2px 8px #d1d9ff66;
+      }
+      .nav-links {
+        display: flex;
+        gap: 22px;
+        list-style: none;
+      }
+      .nav-links li a {
+        color: #7f5af0;
+        text-decoration: none;
+        font-weight: 700;
+        padding: 9px 18px;
+        border-radius: 10px;
+        transition: background 0.25s, color 0.25s;
+        font-size: 1.08rem;
+      }
+      .nav-links li a:hover {
+        background: #7f5af0;
+        color: #fff;
+      }
+      .auth-btns .login-btn {
+        border: 2px solid #7f5af0;
+        padding: 6px 18px;
+        background: transparent;
+        border-radius: 10px;
+        color: #7f5af0;
+        font-weight: 700;
+        transition: background 0.3s, color 0.3s;
+      }
+      .auth-btns .login-btn:hover {
+        background: #7f5af0;
+        color: #fff;
+      }
+      .auth-btns .signup-btn {
+        background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+        color: #232946;
+        padding: 8px 22px;
+        font-weight: 900;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px #43e97b33;
+        border: none;
+        margin-left: 4px;
+        transition: box-shadow 0.3s, background 0.3s, color 0.3s;
+      }
+      .auth-btns .signup-btn:hover {
+        background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
+        color: #fff;
+        box-shadow: 0 8px 32px #43e97b55;
+      }
+
+      /* Mobile menu icon */
+      .menu-icon {
+        display: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #7f5af0;
+      }
+
+      .menu-icon {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: white;
+      }
+      @media (max-width: 768px) {
+        nav.navbar ul.nav-links {
+          display: none;
+          flex-direction: column;
+          background: #3f37c9;
+          position: absolute;
+          top: 60px;
+          right: 30px;
+          width: 180px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(74, 58, 255, 0.4);
+        }
+        nav.navbar ul.nav-links.show {
+          display: flex;
+        }
+        .menu-icon {
+          display: block;
+        }
+      }
+
+      .contact-container {
+        max-width: 900px;
+        margin: 60px auto 80px;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 8px 32px rgba(74, 58, 255, 0.14);
+        padding: 38px 28px 32px 28px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        align-items: flex-start;
+      }
+      .contact-info {
+        flex: 1 1 270px;
+        min-width: 240px;
+        margin-bottom: 20px;
+      }
+      .contact-info h2 {
+        color: #4a3aff;
+        font-size: 2rem;
+        margin-bottom: 12px;
+        font-weight: 800;
+      }
+      .contact-info p {
+        font-size: 1.05rem;
+        color: #444;
+        margin-bottom: 18px;
+      }
+      .contact-details {
+        margin-bottom: 18px;
+      }
+      .contact-details div {
+        margin-bottom: 10px;
+        font-size: 1rem;
+        color: #232946;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .contact-details img {
+        width: 20px;
+        vertical-align: middle;
+      }
+      .socials {
+        margin-top: 10px;
+      }
+      .socials a {
+        display: inline-block;
+        margin-right: 10px;
+      }
+      .socials img {
+        width: 28px;
+        height: 28px;
+        filter: grayscale(0.2);
+        transition: filter 0.2s;
+      }
+      .socials img:hover {
+        filter: grayscale(0) brightness(1.2);
+      }
+
+      .contact-form {
+        flex: 1 1 320px;
+        min-width: 260px;
+        background: #f8f8ff;
+        border-radius: 14px;
+        padding: 28px 22px 18px 22px;
+        box-shadow: 0 4px 16px rgba(74, 58, 255, 0.08);
+      }
+      .contact-form h2 {
+        color: #4a3aff;
+        font-size: 1.4rem;
+        margin-bottom: 18px;
+        font-weight: 700;
+        text-align: center;
+      }
+      .form-group {
+        margin-bottom: 18px;
+      }
+      .form-group label {
+        font-weight: 600;
+        color: #232946;
+        display: block;
+        margin-bottom: 7px;
+        font-size: 1rem;
+      }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 11px 12px;
+        border: 1.5px solid #d1d5fa;
+        border-radius: 8px;
+        font-size: 1rem;
+        background: #fff;
+        transition: border 0.3s, box-shadow 0.3s;
+        outline: none;
+        resize: none;
+        font-family: inherit;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border: 1.5px solid #4a3aff;
+        box-shadow: 0 0 0 2px #4a3aff33;
+        background: #fff;
+      }
+      .contact-form button {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(90deg, #4a3aff 0%, #43e97b 100%);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.08rem;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 10px;
+        box-shadow: 0 4px 16px #4a3aff22;
+        transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+      }
+      .contact-form button:hover {
+        background: linear-gradient(90deg, #43e97b 0%, #4a3aff 100%);
+        box-shadow: 0 8px 32px #43e97b44;
+        transform: translateY(-2px) scale(1.03);
+      }
+      .form-success {
+        color: #43e97b;
+        font-weight: 600;
+        text-align: center;
+        margin-top: 12px;
+        display: none;
+      }
+
+      @media (max-width: 900px) {
+        .contact-container {
+          flex-direction: column;
+          gap: 20px;
+          padding: 24px 8px;
+        }
+        .contact-form {
+          padding: 18px 8px 12px 8px;
+        }
+      }
+
+      /* Footer */
+      footer.footer {
+        background: #3f37c9;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        box-shadow: 0 -4px 12px rgba(74, 58, 255, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">CareerCounselling</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+      </ul>
+      <div class="menu-icon" id="menuToggle">☰</div>
+    </nav>
+
+    <main class="contact-container">
+      <section class="contact-info">
+        <h2>Contact Information</h2>
+        <p>
+          Have questions or feedback about CareerCounselling? <br />
+          Reach out to us using the form or contact details below.<br />
+          <b
+            >This is a student project. Responses may be for demonstration
+            only.</b
+          >
+        </p>
+        <div class="contact-details">
+          <div>
+            <img
+              src="https://img.icons8.com/ios-filled/20/4a3aff/new-post.png"
+            />
+            Email:
+            <a href="mailto:support@CareerCounselling.com"
+              >support@CareerCounselling.com</a
+            >
+          </div>
+          <div>
+            <img src="https://img.icons8.com/ios-filled/20/4a3aff/phone.png" />
+            Phone: +91 98765 43210
+          </div>
+        </div>
+        <div class="socials">
+          <a href="#"
+            ><img
+              src="https://img.icons8.com/ios-filled/28/4a3aff/facebook--v1.png"
+              alt="Facebook"
+          /></a>
+          <a href="#"
+            ><img
+              src="https://img.icons8.com/ios-filled/28/4a3aff/twitter--v1.png"
+              alt="Twitter"
+          /></a>
+          <a href="#"
+            ><img
+              src="https://img.icons8.com/ios-filled/28/4a3aff/linkedin.png"
+              alt="LinkedIn"
+          /></a>
+          <a href="#"
+            ><img
+              src="https://img.icons8.com/ios-filled/28/4a3aff/instagram-new.png"
+              alt="Instagram"
+          /></a>
+        </div>
+      </section>
+      <section class="contact-form">
+        <h2>Send Us a Message</h2>
+        <form id="contactForm" autocomplete="off">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Type your message here..."
+              required
+            ></textarea>
+          </div>
+          <button type="submit">Send Message</button>
+          <div class="form-success" id="formSuccess">
+            Thank you! Your message has been received. (Demo only)
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-bottom">
+        <p>© 2025 CareerCounselling. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Navbar toggle for mobile
+      document.getElementById("menuToggle").onclick = function () {
+        document.getElementById("navLinks").classList.toggle("show");
+      };
+
+      // Contact form email sending logic
+      document.getElementById("contactForm").onsubmit = async function (e) {
+        e.preventDefault();
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        // Change this to your admin/support email if needed
+        const to = "rajrajraj2984@gmail.com";
+        const subject = `Contact Form Submission from ${name}`;
+
+        // Show loading text (optional)
+        const formSuccess = document.getElementById("formSuccess");
+        formSuccess.style.display = "block";
+        formSuccess.style.color = "#232946";
+        formSuccess.innerText = "Sending...";
+
+        try {
+          const res = await fetch("/send-email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              to,
+              subject,
+              message: `From: ${name} <${email}>\n\n${message}`,
+            }),
+          });
+          const data = await res.json();
+          if (data.success) {
+            formSuccess.innerText = "Thank you! Your message has been sent.";
+            formSuccess.style.color = "#43e97b";
+            document.getElementById("contactForm").reset();
+          } else {
+            formSuccess.innerText = "Failed to send. Please try again.";
+            formSuccess.style.color = "#ff6961";
+          }
+        } catch (err) {
+          formSuccess.innerText = "Server error. Please try again later.";
+          formSuccess.style.color = "#ff6961";
+        }
+        // Hide message after 3 seconds (optional)
+        setTimeout(function () {
+          formSuccess.style.display = "none";
+        }, 3000);
+      };
+    </script>
+  </body>
+</html>

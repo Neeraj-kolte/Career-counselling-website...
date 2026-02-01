@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Take Assessment | CareerCounselling</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../dashboard.css" />
+    <style>
+      .assessment-main {
+        max-width: 600px;
+        margin: 110px auto 40px auto;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 8px 32px #6a5eff11;
+        padding: 40px 28px;
+      }
+      .question {
+        margin-bottom: 38px;
+      }
+      .question p {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+      .options label {
+        display: block;
+        margin-bottom: 12px;
+        cursor: pointer;
+      }
+      .assessment-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 24px;
+      }
+      .progress-bar {
+        height: 8px;
+        background: #e9e9f7;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 24px;
+      }
+      .progress-bar-inner {
+        height: 100%;
+        background: linear-gradient(90deg, #6a5eff 0%, #43e97b 100%);
+        transition: width 0.3s;
+      }
+      .result-career {
+        background: #f9f9ff;
+        border-radius: 12px;
+        margin-bottom: 22px;
+        padding: 18px 16px;
+        box-shadow: 0 2px 8px #43e97b11;
+      }
+      .result-career h3 {
+        margin: 0 0 8px 0;
+        color: #4a3aff;
+      }
+      .result-career p {
+        margin: 0 0 6px 0;
+      }
+      .chart-container {
+        margin: 30px 0;
+      }
+      .retake-btn {
+        background: #6a5eff;
+        color: #fff;
+        border: none;
+        border-radius: 18px;
+        padding: 12px 32px;
+        font-size: 1.08rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .retake-btn:hover {
+        background: #43e97b;
+      }
+      @media (max-width: 700px) {
+        .assessment-main {
+          padding: 16px 4px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">CareerCounselling</div>
+      <ul class="nav-links">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="assessment.html" class="active">Take Assessment</a></li>
+        <!-- <li><a href="newprofile.html">Profile</a></li> -->
+        <li>
+          <a href="index.html"><button class="logout">Logout</button></a>
+        </li>
+      </ul>
+    </nav>
+    <main class="assessment-main">
+      <h1>Career Assessment</h1>
+      <div id="assessment-desc">
+        Answer the questions to discover your best-fit careers!
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-inner" id="progress-bar-inner"></div>
+      </div>
+      <div id="assessment-container"></div>
+      <div id="assessment-result" style="display: none"></div>
+    </main>
+    <!-- Chart.js for analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="newassessment.js"></script>
+  </body>
+</html>

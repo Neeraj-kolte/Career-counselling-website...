@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore Careers | CareerCounselling</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", Arial, sans-serif;
+        background: linear-gradient(120deg, #6a11cb 0%, #43e97b 100%);
+        color: #232946;
+        min-height: 100vh;
+      }
+      nav.navbar {
+        background: #3f37c9;
+        padding: 18px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        font-weight: 600;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 12px rgba(74, 58, 255, 0.2);
+      }
+      nav.navbar .logo {
+        font-weight: 900;
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+        cursor: default;
+      }
+      nav.navbar ul.nav-links {
+        list-style: none;
+        display: flex;
+        gap: 22px;
+        margin: 0;
+        padding: 0;
+      }
+      nav.navbar ul.nav-links li a {
+        color: white;
+        text-decoration: none;
+        padding: 6px 10px;
+        border-radius: 6px;
+        transition: background-color 0.25s;
+      }
+      nav.navbar ul.nav-links li a:hover,
+      nav.navbar ul.nav-links li a.active {
+        background: #43e97b;
+        color: #1b1b1b;
+        font-weight: 700;
+      }
+      .menu-icon {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: white;
+      }
+      @media (max-width: 768px) {
+        nav.navbar ul.nav-links {
+          display: none;
+          flex-direction: column;
+          background: #3f37c9;
+          position: absolute;
+          top: 60px;
+          right: 30px;
+          width: 180px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(74, 58, 255, 0.4);
+        }
+        nav.navbar ul.nav-links.show {
+          display: flex;
+        }
+        .menu-icon {
+          display: block;
+        }
+      }
+
+      .careers-hero {
+        padding: 60px 20px 30px 20px;
+        text-align: center;
+        background: linear-gradient(100deg, #43e97b 0%, #38f9d7 100%);
+        color: #232946;
+        border-bottom-left-radius: 50px 20px;
+        border-bottom-right-radius: 50px 20px;
+        box-shadow: 0 8px 32px rgba(74, 58, 255, 0.09);
+      }
+      .careers-hero h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+      }
+      .careers-hero p {
+        font-size: 1.18rem;
+        color: #232946bb;
+        margin-bottom: 0;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .career-container {
+        max-width: 1200px;
+        margin: 40px auto 0 auto;
+        padding: 0 30px 30px 30px;
+      }
+      .filter-section {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        margin-bottom: 36px;
+        flex-wrap: wrap;
+      }
+      #searchInput,
+      #fieldFilter {
+        padding: 12px 16px;
+        border-radius: 10px;
+        border: none;
+        font-size: 1.07rem;
+        background: #f8f8ff;
+        color: #232946;
+        box-shadow: 0 2px 10px #23294611;
+        width: 270px;
+        max-width: 100%;
+        margin-bottom: 10px;
+        outline: none;
+        transition: box-shadow 0.2s;
+      }
+      #searchInput:focus,
+      #fieldFilter:focus {
+        box-shadow: 0 4px 18px #6a11cb22;
+      }
+      .career-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 28px;
+      }
+      .career-card {
+        background: #fff;
+        color: #232946;
+        border-radius: 18px;
+        padding: 28px 22px 22px 22px;
+        box-shadow: 0 6px 24px rgba(74, 58, 255, 0.16);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        transition: transform 0.25s, box-shadow 0.25s;
+        animation: fadeInUp 0.6s;
+        min-height: 210px;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .career-card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 18px 40px #43e97b33;
+      }
+      .career-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        font-size: 2rem;
+        background: #f3f8ff;
+        box-shadow: 0 2px 10px #6a11cb18;
+      }
+      .career-card h3 {
+        margin: 0 0 10px 0;
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+      .career-card p {
+        margin: 0 0 18px 0;
+        color: #444;
+        font-size: 1.01rem;
+        flex: 1;
+      }
+      .career-card .btn {
+        padding: 10px 18px;
+        background: linear-gradient(90deg, #6a11cb 0%, #43e97b 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.04rem;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+        box-shadow: 0 2px 10px #6a11cb22;
+      }
+      .career-card .btn:hover {
+        background: linear-gradient(90deg, #43e97b 0%, #6a11cb 100%);
+        transform: scale(1.05);
+      }
+      .career-list p {
+        color: #232946;
+        font-size: 1.1rem;
+        text-align: center;
+        grid-column: 1 / -1;
+      }
+
+      /* Modal Styles */
+      .modal-bg {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.36);
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-bg.active {
+        display: flex;
+      }
+      .career-modal {
+        background: #fff;
+        border-radius: 18px;
+        max-width: 420px;
+        width: 90%;
+        padding: 36px 28px 22px 28px;
+        box-shadow: 0 8px 40px #23294644;
+        position: relative;
+        animation: fadeInUp 0.4s;
+      }
+      .modal-close {
+        position: absolute;
+        top: 12px;
+        right: 18px;
+        font-size: 1.6rem;
+        color: #4a3aff;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: color 0.2s;
+      }
+      .modal-close:hover {
+        color: #ff6961;
+      }
+      .career-modal h2 {
+        margin-top: 0;
+        color: #4a3aff;
+        font-size: 1.3rem;
+        margin-bottom: 6px;
+      }
+      .career-modal .career-icon {
+        margin: 0 auto 10px auto;
+        display: block;
+      }
+      .career-modal .modal-section {
+        margin-bottom: 12px;
+      }
+      .career-modal ul {
+        padding-left: 18px;
+        color: #444;
+        margin: 0 0 8px 0;
+      }
+      .career-modal .modal-link {
+        display: inline-block;
+        margin-top: 10px;
+        color: #43e97b;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 1.01rem;
+        transition: color 0.2s;
+      }
+      .career-modal .modal-link:hover {
+        color: #4a3aff;
+        text-decoration: underline;
+      }
+
+      @media (max-width: 600px) {
+        .careers-hero {
+          padding: 36px 8px 18px 8px;
+        }
+        .career-container {
+          padding: 0 8px 18px 8px;
+        }
+        .filter-section {
+          gap: 8px;
+        }
+        .career-modal {
+          padding: 14px 6px 10px 6px;
+        }
+      }
+      footer.footer {
+        background: #3f37c9;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        box-shadow: 0 -4px 12px rgba(74, 58, 255, 0.2);
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">CareerCounselling</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li class="auth-btns" id="loginNav">
+          <a href="login.html" class="login-btn">Login</a>
+        </li>
+        <li class="auth-btns" id="signupNav">
+          <a href="register.html" class="signup-btn">Sign Up</a>
+        </li>
+      </ul>
+      <div class="menu-icon" id="menuToggle">☰</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="careers-hero">
+      <h1>Explore Careers</h1>
+      <p>
+        Browse trending career paths, discover what suits you, and get inspired
+        for your future. Search or filter by field to find your dream career!
+      </p>
+    </section>
+
+    <!-- Filter and Career Cards -->
+    <div class="career-container">
+      <div class="filter-section">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="🔍 Search careers..."
+        />
+        <select id="fieldFilter">
+          <option value="all">All Fields</option>
+          <option value="tech">Technology</option>
+          <option value="health">Healthcare</option>
+          <option value="creative">Creative</option>
+          <option value="business">Business</option>
+          <option value="education">Education</option>
+          <option value="science">Science</option>
+          <option value="public">Public Service</option>
+        </select>
+      </div>
+      <div class="career-list" id="careerList">
+        <!-- Career cards will be injected by JS -->
+      </div>
+    </div>
+
+    <!-- Modal for Career Details -->
+    <div class="modal-bg" id="careerModalBg">
+      <div class="career-modal" id="careerModal">
+        <button class="modal-close" id="modalCloseBtn">&times;</button>
+        <!-- Content will be injected by JS -->
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-bottom">
+        <p>© 2025 CareerCounselling. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Career data (expand as needed)
+      const careers = [
+        {
+          title: "Software Engineer",
+          desc: "Design, develop, and maintain computer software and applications. High demand in IT, finance, and startups.",
+          field: "tech",
+          icon: `<img src="https://img.icons8.com/ios-filled/48/4a3aff/laptop-coding.png" alt="Software Engineer"/>`,
+          link: "https://www.careers360.com/careers/software-developer",
+          details: {
+            skills: [
+              "Programming",
+              "Problem Solving",
+              "Teamwork",
+              "Algorithms",
+            ],
+            salary: "₹4-15 LPA (India, entry-mid)",
+            growth: "Very High (AI, Cloud, Web, Mobile)",
+            about:
+              "Software engineers create the digital tools and platforms we use every day, from apps to websites to AI systems.",
+          },
+        },
+        {
+          title: "Doctor (MBBS/MD)",
+          desc: "Diagnose and treat patients, work in hospitals or clinics, and contribute to public health.",
+          field: "health",
+          icon: `<img src="https://img.icons8.com/ios-filled/48/43e97b/doctor-male.png" alt="Doctor"/>`,
+          link: "https://www.careers360.com/careers/doctor",
+          details: {
+            skills: [
+              "Empathy",
+              "Medical Knowledge",
+              "Communication",
+              "Critical Thinking",
+            ],
+            salary: "₹6-20 LPA (India, varies by specialization)",
+            growth: "Consistent (Healthcare always in demand)",
+            about:
+              "Doctors play a vital role in society by caring for patients, advancing medicine, and improving lives.",
+          },
+        },
+        {
+          title: "Graphic Designer",
+          desc: "Create visual content for brands, websites, and media. Combine art and technology for creative impact.",
+          field: "creative",
+          icon: `<img src="https://img.icons8.com/ios-filled/48/ffb347/design.png" alt="Graphic Designer"/>`,
+          link: "https://www.careers360.com/careers/graphic-designer",
+          details: {
+            skills: [
+              "Creativity",
+              "Design Tools",
+              "Color Theory",
+              "Communication",
+            ],
+            salary: "₹2-8 LPA (India, entry-mid)",
+            growth: "High (Digital marketing, branding, UI/UX)",
+            about:
+              "Graphic designers turn ideas into visuals, shaping how brands and products are seen by the world.",
+          },
+        },
+        {
+          title: "Business Analyst",
+          desc: "Analyze business processes, identify solutions, and help organizations grow efficiently.",
+          field: "business",
+          icon: `<img src="https://img.icons8.com/ios-filled/48/779ecb/combo-chart.png" alt="Business Analyst"/>`,
+          link: "https://www.careers360.com/careers/business-analyst",
+          details: {
+            skills: ["Analysis", "Excel", "Communication", "Problem Solving"],
+            salary: "₹4-12 LPA (India, entry-mid)",
+            growth: "High (All industries need analysts)",
+            about:
+              "Business analysts bridge the gap between business needs and technology, making companies more efficient.",
+          },
+        },
+        {
+          title: "Teacher",
+          desc: "Inspire and educate students, shape future generations, and work in schools or colleges.",
+          field: "education",
+          icon: `<img src="https://img.icons8.com/ios-filled/48/fdfd96/classroom.png" alt="Teacher"/>`,
+          link: "https://www.careers360.com/careers/teacher",
+          details: {
+            skills: [
+              "Communication",
+              "Patience",
+              "Subject Knowledge",
+              "Empathy",
+            ],
+            salary: "₹2-8 LPA (India, entry-mid)",
+            growth: "Stable (Education sector always needed)",
+            about:
+              "Teachers make a difference by helping students learn, grow, and reach their full potential.",
+          },
+        },
+        {
+          title: "Research Scientist",
+          desc: "Conduct experiments, analyze data, and contribute to scientific discoveries in labs or academia.",
+          field: "science",
+          icon: `<img src="https://img.icons8.com/ios-filled/48/ff6961/microscope.png" alt="Research Scientist"/>`,
+          link: "https://www.careers360.com/careers/research-scientist",
+          details: {
+            skills: [
+              "Research",
+              "Data Analysis",
+              "Critical Thinking",
+              "Attention to Detail",
+            ],
+            salary: "₹4-15 LPA (India, entry-mid)",
+            growth: "High (STEM fields, innovation)",
+            about:
+              "Research scientists push the boundaries of knowledge, making new discoveries that change the world.",
+          },
+        },
+        {
+          title: "Civil Services (IAS/IPS)",
+          desc: "Serve the nation, implement policies, and work in administration, law enforcement, or public welfare.",
+          field: "public",
+          icon: `<img src="https://img.icons8.com/color/48/000000/court-judge.png" alt="Civil Services"/>`,
+          link: "https://www.careers360.com/careers/ias-officer",
+          details: {
+            skills: [
+              "Leadership",
+              "Decision Making",
+              "Ethics",
+              "General Knowledge",
+            ],
+            salary: "₹6-15 LPA (India, entry-mid)",
+            growth: "Prestigious, High Responsibility",
+            about:
+              "Civil servants play a key role in governance, policy-making, and public service in India.",
+          },
+        },
+        {
+          title: "Nurse",
+          desc: "Provide patient care, assist doctors, and play a vital role in hospitals and clinics.",
+          field: "health",
+          icon: `<img src="https://img.icons8.com/ios-filled/48/43e97b/nurse-female.png" alt="Nurse"/>`,
+          link: "https://www.careers360.com/careers/nurse",
+          details: {
+            skills: [
+              "Compassion",
+              "Medical Knowledge",
+              "Teamwork",
+              "Attention to Detail",
+            ],
+            salary: "₹2-7 LPA (India, entry-mid)",
+            growth: "High (Healthcare sector expanding)",
+            about:
+              "Nurses are the backbone of healthcare, providing care, comfort, and support to patients.",
+          },
+        },
+        {
+          title: "Data Scientist",
+          desc: "Analyze large data sets to find trends, make predictions, and help businesses make data-driven decisions.",
+          field: "tech",
+          icon: `<img src="https://img.icons8.com/ios-filled/48/4a3aff/artificial-intelligence.png" alt="Data Scientist"/>`,
+          link: "https://www.careers360.com/careers/data-scientist",
+          details: {
+            skills: [
+              "Statistics",
+              "Programming",
+              "Machine Learning",
+              "Data Visualization",
+            ],
+            salary: "₹7-20 LPA (India, entry-mid)",
+            growth: "Very High (Big Data, AI, Analytics)",
+            about:
+              "Data scientists turn raw data into insights, helping organizations innovate and grow.",
+          },
+        },
+        {
+          title: "Entrepreneur",
+          desc: "Start your own business, innovate, and create value in any field you are passionate about.",
+          field: "business",
+          icon: `<img src="https://img.icons8.com/ios-filled/48/ffb347/businessman.png" alt="Entrepreneur"/>`,
+          link: "https://www.careers360.com/careers/entrepreneur",
+          details: {
+            skills: ["Creativity", "Risk Taking", "Leadership", "Networking"],
+            salary: "Varies (Depends on business success)",
+            growth: "Unlimited (Innovation driven)",
+            about:
+              "Entrepreneurs create new ventures, solve problems, and drive economic growth.",
+          },
+        },
+        // NEW CAREER CARDS BELOW
+        {
+          title: "Chartered Accountant (CA)",
+          desc: "Expert in accounting, auditing, taxation, and financial management. Respected and high-paying profession.",
+          field: "business",
+          icon: `<img src="https://img.icons8.com/color/48/000000/accounting.png" alt="Chartered Accountant"/>`,
+          link: "https://www.careers360.com/careers/chartered-accountant",
+          details: {
+            skills: [
+              "Accounting",
+              "Analytical Skills",
+              "Ethics",
+              "Attention to Detail",
+            ],
+            salary: "₹6-30 LPA (India, entry-mid)",
+            growth: "High (Finance, audit, consulting)",
+            about:
+              "CAs manage finances for companies, individuals, and governments, ensuring compliance and financial health.",
+          },
+        },
+        {
+          title: "Journalist",
+          desc: "Report news, investigate stories, and communicate information to the public via print, TV, or digital media.",
+          field: "creative",
+          icon: `<img src="https://img.icons8.com/color/48/000000/news.png" alt="Journalist"/>
+`,
+          link: "https://www.careers360.com/careers/journalist",
+          details: {
+            skills: ["Writing", "Research", "Communication", "Curiosity"],
+            salary: "₹2-10 LPA (India, entry-mid)",
+            growth: "Medium (Media, digital, TV, print)",
+            about:
+              "Journalists inform society, shape opinions, and hold power accountable through their reporting.",
+          },
+        },
+        {
+          title: "Pharmacist",
+          desc: "Dispense medications, counsel patients, and ensure safe use of drugs in hospitals or pharmacies.",
+          field: "health",
+          icon: `<img src="https://img.icons8.com/color/48/000000/pill.png" alt="Pharmacist"/>`,
+          link: "https://www.careers360.com/careers/pharmacist",
+          details: {
+            skills: [
+              "Pharmacy Knowledge",
+              "Attention to Detail",
+              "Customer Service",
+              "Organization",
+            ],
+            salary: "₹2-8 LPA (India, entry-mid)",
+            growth: "High (Healthcare, pharma industry)",
+            about:
+              "Pharmacists are medication experts who help patients use medicines safely and effectively.",
+          },
+        },
+        {
+          title: "Lawyer",
+          desc: "Advise clients, represent them in court, and interpret laws in various fields like criminal, civil, or corporate.",
+          field: "public",
+          icon: `<img src="https://img.icons8.com/color/48/000000/scales.png" alt="Lawyer"/>
+`,
+          link: "https://www.careers360.com/careers/lawyer",
+          details: {
+            skills: [
+              "Legal Knowledge",
+              "Argumentation",
+              "Research",
+              "Communication",
+            ],
+            salary: "₹3-12 LPA (India, entry-mid)",
+            growth: "High (Law firms, courts, companies)",
+            about:
+              "Lawyers protect rights, resolve disputes, and uphold justice in society.",
+          },
+        },
+        {
+          title: "Environmental Scientist",
+          desc: "Study the environment, work on sustainability, pollution control, and conservation projects.",
+          field: "science",
+          icon: `<img src="https://img.icons8.com/color/48/000000/earth-planet.png" alt="Environmental Scientist"/>
+`,
+          link: "https://www.careers360.com/careers/environmental-scientist",
+          details: {
+            skills: [
+              "Research",
+              "Data Analysis",
+              "Field Work",
+              "Problem Solving",
+            ],
+            salary: "₹3-10 LPA (India, entry-mid)",
+            growth: "High (Climate, sustainability, NGOs)",
+            about:
+              "Environmental scientists help protect our planet by studying and solving ecological challenges.",
+          },
+        },
+      ];
+
+      function displayCareers(list) {
+        const container = document.getElementById("careerList");
+        container.innerHTML = "";
+
+        if (list.length === 0) {
+          container.innerHTML = "<p>No careers found.</p>";
+          return;
+        }
+
+        list.forEach((career, idx) => {
+          const card = document.createElement("div");
+          card.classList.add("career-card");
+
+          card.innerHTML = `
+          <div class="career-icon">${career.icon}</div>
+          <h3>${career.title}</h3>
+          <p>${career.desc}</p>
+          <button class="btn" data-idx="${idx}">Learn More</button>
+        `;
+
+          // Button opens modal with details
+          card.querySelector(".btn").onclick = function () {
+            showCareerModal(idx);
+          };
+
+          container.appendChild(card);
+        });
+      }
+
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", filterCareers);
+      document
+        .getElementById("fieldFilter")
+        .addEventListener("change", filterCareers);
+
+      function filterCareers() {
+        const searchVal = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        const fieldVal = document.getElementById("fieldFilter").value;
+
+        const filtered = careers.filter((career) => {
+          return (
+            (career.title.toLowerCase().includes(searchVal) ||
+              career.desc.toLowerCase().includes(searchVal)) &&
+            (fieldVal === "all" || career.field === fieldVal)
+          );
+        });
+
+        displayCareers(filtered);
+      }
+
+      // Initial display
+      displayCareers(careers);
+
+      // Modal Logic
+      function showCareerModal(idx) {
+        const modalBg = document.getElementById("careerModalBg");
+        const modal = document.getElementById("careerModal");
+        const career = careers[idx];
+        modal.innerHTML = `
+        <button class="modal-close" id="modalCloseBtn">&times;</button>
+        <div class="career-icon" style="margin:0 auto 10px auto;display:block;">${
+          career.icon
+        }</div>
+        <h2>${career.title}</h2>
+        <div class="modal-section"><strong>About:</strong> ${
+          career.details.about
+        }</div>
+        <div class="modal-section"><strong>Key Skills:</strong>
+          <ul>${career.details.skills.map((s) => `<li>${s}</li>`).join("")}</ul>
+        </div>
+        <div class="modal-section"><strong>Average Salary:</strong> ${
+          career.details.salary
+        }</div>
+        <div class="modal-section"><strong>Growth & Scope:</strong> ${
+          career.details.growth
+        }</div>
+        <a class="modal-link" href="${
+          career.link
+        }" target="_blank">Read Full Career Guide &rarr;</a>
+      `;
+        modalBg.classList.add("active");
+        document.getElementById("modalCloseBtn").onclick = function () {
+          modalBg.classList.remove("active");
+        };
+        // Close modal on background click
+        modalBg.onclick = function (e) {
+          if (e.target === modalBg) modalBg.classList.remove("active");
+        };
+      }
+
+      // Responsive Navbar Menu (Mobile)
+      document.getElementById("menuToggle").onclick = function () {
+        document.getElementById("navLinks").classList.toggle("show");
+      };
+    </script>
+  </body>
+</html>

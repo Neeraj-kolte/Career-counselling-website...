@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQs | CareerCounselling</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(135deg, #6a5eff 0%, #43e97b 100%);
+        font-family: "Poppins", Arial, sans-serif;
+        margin: 0;
+        min-height: 100vh;
+        color: #222;
+      }
+      /* Navbar */
+      /* Google Fonts Import (add in <head> of your HTML too) */
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap");
+
+      /* Reset & Base */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Montserrat", "Poppins", Arial, sans-serif;
+        background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+        color: #232946;
+        min-height: 100vh;
+        letter-spacing: 0.03em;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.18);
+      }
+      .logo {
+        font-weight: 900;
+        font-size: 2.1rem;
+        color: #7f5af0;
+        letter-spacing: 2px;
+        font-family: "Montserrat", sans-serif;
+        text-shadow: 0 2px 8px #d1d9ff66;
+      }
+      .nav-links {
+        display: flex;
+        gap: 22px;
+        list-style: none;
+      }
+      .nav-links li a {
+        color: #7f5af0;
+        text-decoration: none;
+        font-weight: 700;
+        padding: 9px 18px;
+        border-radius: 10px;
+        transition: background 0.25s, color 0.25s;
+        font-size: 1.08rem;
+      }
+      .nav-links li a:hover {
+        background: #7f5af0;
+        color: #fff;
+      }
+      .auth-btns .login-btn {
+        border: 2px solid #7f5af0;
+        padding: 6px 18px;
+        background: transparent;
+        border-radius: 10px;
+        color: #7f5af0;
+        font-weight: 700;
+        transition: background 0.3s, color 0.3s;
+      }
+      .auth-btns .login-btn:hover {
+        background: #7f5af0;
+        color: #fff;
+      }
+      .auth-btns .signup-btn {
+        background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+        color: #232946;
+        padding: 8px 22px;
+        font-weight: 900;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px #43e97b33;
+        border: none;
+        margin-left: 4px;
+        transition: box-shadow 0.3s, background 0.3s, color 0.3s;
+      }
+      .auth-btns .signup-btn:hover {
+        background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
+        color: #fff;
+        box-shadow: 0 8px 32px #43e97b55;
+      }
+
+      /* Mobile menu icon */
+      .menu-icon {
+        display: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #7f5af0;
+      }
+
+      .menu-icon {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: white;
+      }
+      @media (max-width: 768px) {
+        nav.navbar ul.nav-links {
+          display: none;
+          flex-direction: column;
+          background: #3f37c9;
+          position: absolute;
+          top: 60px;
+          right: 30px;
+          width: 180px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(74, 58, 255, 0.4);
+        }
+        nav.navbar ul.nav-links.show {
+          display: flex;
+        }
+        .menu-icon {
+          display: block;
+        }
+      }
+
+      /* FAQ Container */
+      .faq-container {
+        max-width: 820px;
+        margin: 60px auto 80px;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 8px 32px rgba(74, 58, 255, 0.14);
+        padding: 38px 28px 32px 28px;
+      }
+      .faq-title {
+        font-size: 2.2rem;
+        color: #4a3aff;
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 36px;
+        letter-spacing: 1px;
+      }
+
+      /* Accordion FAQ Styles */
+      .faq-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .faq-item {
+        margin-bottom: 18px;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(74, 58, 255, 0.06);
+        background: #f8f8ff;
+        overflow: hidden;
+        transition: box-shadow 0.2s;
+      }
+      .faq-question {
+        cursor: pointer;
+        padding: 18px 20px;
+        font-weight: 600;
+        color: #232946;
+        font-size: 1.08rem;
+        background: linear-gradient(90deg, #6a5eff 0%, #43e97b 100%);
+        color: #fff;
+        border: none;
+        outline: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.2s;
+      }
+      .faq-question:hover {
+        background: linear-gradient(90deg, #43e97b 0%, #6a5eff 100%);
+      }
+      .faq-arrow {
+        font-size: 1.2rem;
+        transition: transform 0.3s;
+      }
+      .faq-item.active .faq-arrow {
+        transform: rotate(90deg);
+      }
+      .faq-answer {
+        padding: 0 20px 16px 20px;
+        color: #444;
+        font-size: 1rem;
+        display: none;
+        background: #f8f8ff;
+        line-height: 1.7;
+        animation: fadeIn 0.3s;
+      }
+      .faq-item.active .faq-answer {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @media (max-width: 600px) {
+        .faq-container {
+          padding: 18px 4px;
+        }
+        .faq-title {
+          font-size: 1.3rem;
+        }
+        .faq-question {
+          font-size: 1rem;
+          padding: 15px 12px;
+        }
+        .faq-answer {
+          font-size: 0.96rem;
+          padding: 0 12px 14px 12px;
+        }
+      }
+
+      /* Footer */
+      footer.footer {
+        background: #3f37c9;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        box-shadow: 0 -4px 12px rgba(74, 58, 255, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">CareerCounselling</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html" class="active">FAQs</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+      </ul>
+      <div class="menu-icon" id="menuToggle">☰</div>
+    </nav>
+
+    <main class="faq-container">
+      <div class="faq-title">Frequently Asked Questions</div>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <div class="faq-question">
+            1. What is CareerCounselling? <span class="faq-arrow">&#9654;</span>
+          </div>
+          <div class="faq-answer">
+            CareerCounselling is a student-focused career counselling platform
+            developed as a college minor project. It helps students discover
+            suitable career options using online assessments, expert guidance,
+            and helpful resources.
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            2. How does the career assessment test work?
+            <span class="faq-arrow">&#9654;</span>
+          </div>
+          <div class="faq-answer">
+            Our career assessment test asks you a series of questions about your
+            interests, skills, and preferences. Based on your answers, the
+            platform suggests career paths that best match your profile.
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            3. Is CareerCounselling free to use?
+            <span class="faq-arrow">&#9654;</span>
+          </div>
+          <div class="faq-answer">
+            Yes, all core features of CareerCounselling-including assessments
+            and career resources-are completely free for students, as this is an
+            academic project.
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            4. How can I connect with a career counselor or mentor?
+            <span class="faq-arrow">&#9654;</span>
+          </div>
+          <div class="faq-answer">
+            After registering and logging in, you can view available counselors
+            and mentors on the platform. You can book a session or send a
+            message directly from your dashboard.
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            5. How do I create an account on CareerCounselling?
+            <span class="faq-arrow">&#9654;</span>
+          </div>
+          <div class="faq-answer">
+            Click on the "Register" button in the navigation bar, fill in your
+            details, and submit the form. You will receive a confirmation email
+            to activate your account.
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            6. How is my data kept private and secure?
+            <span class="faq-arrow">&#9654;</span>
+          </div>
+          <div class="faq-answer">
+            All user data is securely stored and is never shared with third
+            parties. The platform follows standard privacy practices, and your
+            information is used only for providing personalized career guidance.
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            7. What should I do if I forget my password or cannot log in?
+            <span class="faq-arrow">&#9654;</span>
+          </div>
+          <div class="faq-answer">
+            If you forget your password, use the "Forgot Password?" link on the
+            login page to reset it. For other login issues, please contact our
+            support team via the Contact page.
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-question">
+            8. Who developed CareerCounselling?
+            <span class="faq-arrow">&#9654;</span>
+          </div>
+          <div class="faq-answer">
+            CareerCounselling was designed and developed by a team of
+            undergraduate students as part of their college minor project. The
+            project aims to help fellow students make informed career choices.
+          </div>
+        </li>
+      </ul>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-bottom">
+        <p>© 2025 CareerCounselling. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Navbar toggle for mobile
+      document.getElementById("menuToggle").onclick = function () {
+        document.getElementById("navLinks").classList.toggle("show");
+      };
+
+      // Accordion effect for FAQ
+      document.querySelectorAll(".faq-question").forEach(function (q) {
+        q.onclick = function () {
+          const item = this.parentElement;
+          item.classList.toggle("active");
+          // Close others
+          document.querySelectorAll(".faq-item").forEach(function (other) {
+            if (other !== item) other.classList.remove("active");
+          });
+        };
+      });
+    </script>
+  </body>
+</html>

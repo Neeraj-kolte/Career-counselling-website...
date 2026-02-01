@@ -1,0 +1,381 @@
+:root {
+  --primary: #6a5eff;
+  --secondary: #4a3aff;
+  --accent: #43e97b;
+  --yellow: #ffd200;
+  --text: #232946;
+  --bg: #f8f9fa;
+  --white: #fff;
+  --shadow: 0 8px 32px rgba(74, 58, 255, 0.09);
+  --radius: 18px;
+}
+
+/* Animated Gradient Background */
+body {
+  margin: 0;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4a3aff 0%, #6a5eff 30%, #43e97b 100%);
+  background-attachment: fixed;
+  color: var(--text);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.93);
+  box-shadow: var(--shadow);
+  padding: 18px 36px;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(14px);
+}
+
+.logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--primary);
+  letter-spacing: 1.5px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.08rem;
+  transition: background 0.2s, color 0.2s;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+.nav-links li a:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.logout {
+  background: var(--primary);
+  color: #fff;
+  padding: 7px 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  border: none;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.logout:hover {
+  background: var(--accent);
+  color: var(--text);
+}
+
+/* Stats Overview */
+.stats-overview {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin: 36px auto 0 auto;
+  max-width: 900px;
+}
+.stat-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 26px;
+  min-width: 170px;
+}
+.stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #fff;
+}
+.bg-blue { background: var(--primary); }
+.bg-green { background: var(--accent); }
+.bg-yellow { background: var(--yellow); color: #222; }
+.bg-red { background: #e63946; }
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.stat-label {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Profile Card */
+.counsellor-profile-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px 28px;
+  max-width: 540px;
+  margin: 38px auto 0 auto;
+}
+.profile-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: #e9e9ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--primary);
+  font-weight: 900;
+  user-select: none;
+  margin-top: 10px;
+}
+.profile-info h2 {
+  margin: 0 0 8px 0;
+  color: var(--primary);
+}
+.profile-details {
+  color: #555;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+.profile-form-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.profile-form-row label {
+  min-width: 70px;
+  font-weight: 500;
+}
+#profile-form input {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+#profile-form button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  transition: background 0.2s;
+}
+#profile-form button:hover {
+  background: var(--accent);
+  color: var(--text);
+}
+
+/* Requests Section */
+.counsellor-requests {
+  max-width: 800px;
+  margin: 28px auto 0;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 24px;
+}
+.requests-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.requests-header h3 {
+  color: var(--primary);
+  margin: 0;
+}
+#request-filter {
+  padding: 6px 12px;
+  border-radius: 7px;
+  border: 1.5px solid #ccc;
+  font-size: 1rem;
+}
+.request-card {
+  background: #f8f8fc;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 8px #4a3aff11;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-left: 6px solid var(--primary);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.request-card .badge {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-left: 8px;
+}
+.badge.pending { background: #fff3cd; color: #856404; }
+.badge.accepted { background: #d4edda; color: #155724; }
+.badge.declined { background: #f8d7da; color: #721c24; }
+.request-card-actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 10px;
+}
+.request-card button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.request-card button.accept { background: var(--accent); color: var(--text);}
+.request-card button.decline { background: #e63946; }
+.request-card button.email { background: var(--primary); }
+.request-card button.call { background: var(--accent); color: var(--text);}
+.request-card button:hover { opacity: 0.85; }
+
+/* Email Modal */
+#email-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(74, 58, 255, 0.09);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+#email-modal .modal-content {
+  background: var(--white);
+  padding: 32px 36px;
+  border-radius: var(--radius);
+  min-width: 340px;
+  max-width: 95vw;
+  box-shadow: 0 6px 32px #4a3aff22, 0 1.5px 4px #6a5eff18;
+  position: relative;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+  color: var(--text);
+}
+#email-modal h2 {
+  margin-top: 0;
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+#email-modal label {
+  font-weight: 500;
+  color: var(--primary);
+}
+#email-modal input[type="text"], #email-modal textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1.5px solid #d2e3f3;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  font-size: 1rem;
+  background: #f4faff;
+  color: var(--text);
+  transition: border-color 0.2s;
+}
+#email-modal input[type="text"]:focus, #email-modal textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+#email-modal button[type="submit"] {
+  background: linear-gradient(90deg, var(--primary) 60%, var(--accent) 100%);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 10px;
+  box-shadow: 0 2px 8px #4a3aff11;
+}
+#email-modal button[type="submit"]:hover {
+  background: linear-gradient(90deg, var(--accent) 60%, var(--primary) 100%);
+}
+#email-modal .close-modal {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 1.7rem;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+#email-modal .close-modal:hover {
+  color: #e63946;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .stats-overview { flex-wrap: wrap; gap: 14px; }
+  .stat-card { min-width: 120px; }
+}
+@media (max-width: 700px) {
+  .counsellor-profile-card { flex-direction: column; gap: 10px; padding: 16px 6px; }
+  .stats-overview { flex-direction: column; gap: 12px; }
+  .counsellor-requests { padding: 16px 4px; }
+  .stat-card { padding: 12px 10px; }
+}
+
+
+
+
+.analytics-card {
+  background: var(--white) !important;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 24px 18px 24px;
+  margin: 32px auto;
+  max-width: 400px;
+}
+.analytics-card h2 {
+  color: var(--primary);
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+@media (max-width: 600px) {
+  .analytics-card {
+    padding: 14px 6px 10px 6px;
+    max-width: 96vw;
+  }
+}

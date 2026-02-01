@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connect with Mentors | CareerCounselling</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", Arial, sans-serif;
+        background: linear-gradient(120deg, #6a11cb 0%, #43e97b 100%);
+        color: #232946;
+        min-height: 100vh;
+      }
+      nav.navbar {
+        background: #3f37c9;
+        padding: 18px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        font-weight: 600;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 12px rgba(74, 58, 255, 0.2);
+      }
+      nav.navbar .logo {
+        font-weight: 900;
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+        cursor: default;
+      }
+      nav.navbar ul.nav-links {
+        list-style: none;
+        display: flex;
+        gap: 22px;
+        margin: 0;
+        padding: 0;
+      }
+      nav.navbar ul.nav-links li a {
+        color: white;
+        text-decoration: none;
+        padding: 6px 10px;
+        border-radius: 6px;
+        transition: background-color 0.25s;
+      }
+      nav.navbar ul.nav-links li a:hover,
+      nav.navbar ul.nav-links li a.active {
+        background: #43e97b;
+        color: #1b1b1b;
+        font-weight: 700;
+      }
+      .menu-icon {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: white;
+      }
+      @media (max-width: 768px) {
+        nav.navbar ul.nav-links {
+          display: none;
+          flex-direction: column;
+          background: #3f37c9;
+          position: absolute;
+          top: 60px;
+          right: 30px;
+          width: 180px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(74, 58, 255, 0.4);
+        }
+        nav.navbar ul.nav-links.show {
+          display: flex;
+        }
+        .menu-icon {
+          display: block;
+        }
+      }
+
+      .mentors-hero {
+        padding: 60px 20px 30px 20px;
+        text-align: center;
+        background: linear-gradient(100deg, #43e97b 0%, #38f9d7 100%);
+        color: #232946;
+        border-bottom-left-radius: 50px 20px;
+        border-bottom-right-radius: 50px 20px;
+        box-shadow: 0 8px 32px rgba(74, 58, 255, 0.09);
+      }
+      .mentors-hero h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+      }
+      .mentors-hero p {
+        font-size: 1.18rem;
+        color: #232946bb;
+        margin-bottom: 0;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .mentor-container {
+        max-width: 1200px;
+        margin: 40px auto 0 auto;
+        padding: 0 30px 30px 30px;
+      }
+      .filter-section {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        margin-bottom: 36px;
+        flex-wrap: wrap;
+      }
+      #searchInput {
+        padding: 12px 16px;
+        border-radius: 10px;
+        border: none;
+        font-size: 1.07rem;
+        background: #f8f8ff;
+        color: #232946;
+        box-shadow: 0 2px 10px #23294611;
+        width: 320px;
+        max-width: 100%;
+        margin-bottom: 10px;
+        outline: none;
+        transition: box-shadow 0.2s;
+      }
+      #searchInput:focus {
+        box-shadow: 0 4px 18px #6a11cb22;
+      }
+      .mentor-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 28px;
+      }
+      .mentor-card {
+        background: #fff;
+        color: #232946;
+        border-radius: 18px;
+        padding: 28px 22px 22px 22px;
+        box-shadow: 0 6px 24px rgba(74, 58, 255, 0.16);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        transition: transform 0.25s, box-shadow 0.25s;
+        animation: fadeInUp 0.6s;
+        min-height: 210px;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .mentor-card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 18px 40px #43e97b33;
+      }
+      .mentor-avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 12px;
+        border: 3px solid #43e97b;
+        background: #f3f8ff;
+      }
+      .mentor-card h3 {
+        margin: 0 0 4px 0;
+        font-size: 1.18rem;
+        font-weight: 700;
+      }
+      .mentor-field {
+        font-size: 0.98rem;
+        color: #4a3aff;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+      .mentor-bio {
+        margin: 0 0 10px 0;
+        color: #444;
+        font-size: 1.01rem;
+        flex: 1;
+      }
+      .mentor-contact {
+        font-size: 0.98rem;
+        color: #888;
+        margin-bottom: 6px;
+      }
+      .mentor-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 8px;
+      }
+      .mentor-btn {
+        padding: 8px 14px;
+        background: linear-gradient(90deg, #6a11cb 0%, #43e97b 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.01rem;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+        box-shadow: 0 2px 10px #6a11cb22;
+      }
+      .mentor-btn:hover {
+        background: linear-gradient(90deg, #43e97b 0%, #6a11cb 100%);
+        transform: scale(1.07);
+      }
+      .mentor-list p {
+        color: #232946;
+        font-size: 1.1rem;
+        text-align: center;
+        grid-column: 1 / -1;
+      }
+      .login-note {
+        text-align: center;
+        margin: 8px 0 20px 0;
+        color: #ff6961;
+        font-weight: 600;
+        font-size: 1.05rem;
+      }
+
+      /* Modal Styles */
+      .modal-bg {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.36);
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-bg.active {
+        display: flex;
+      }
+      .mentor-modal {
+        background: #fff;
+        border-radius: 16px;
+        max-width: 400px;
+        width: 95%;
+        padding: 32px 20px 20px 20px;
+        box-shadow: 0 8px 40px #23294644;
+        position: relative;
+        animation: fadeInUp 0.4s;
+        text-align: center;
+      }
+      .modal-close {
+        position: absolute;
+        top: 12px;
+        right: 18px;
+        font-size: 1.6rem;
+        color: #4a3aff;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: color 0.2s;
+      }
+      .modal-close:hover {
+        color: #ff6961;
+      }
+      .mentor-modal h2 {
+        margin-top: 0;
+        color: #4a3aff;
+        font-size: 1.15rem;
+        margin-bottom: 6px;
+      }
+      .mentor-modal .mentor-avatar {
+        margin: 0 auto 10px auto;
+        display: block;
+        border: 2px solid #43e97b;
+      }
+      .mentor-modal .modal-section {
+        margin-bottom: 12px;
+        color: #444;
+        font-size: 1.01rem;
+      }
+      .mentor-modal .modal-link {
+        display: inline-block;
+        margin-top: 10px;
+        color: #43e97b;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 1.01rem;
+        transition: color 0.2s;
+      }
+      .mentor-modal .modal-link:hover {
+        color: #4a3aff;
+        text-decoration: underline;
+      }
+      .modal-success {
+        color: #43e97b;
+        font-weight: 600;
+        margin-top: 10px;
+        font-size: 1.05rem;
+        display: none;
+      }
+      @media (max-width: 600px) {
+        .mentors-hero {
+          padding: 36px 8px 18px 8px;
+        }
+        .mentor-container {
+          padding: 0 8px 18px 8px;
+        }
+        .filter-section {
+          gap: 8px;
+        }
+        .mentor-modal {
+          padding: 14px 6px 10px 6px;
+        }
+      }
+      footer.footer {
+        background: #3f37c9;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        box-shadow: 0 -4px 12px rgba(74, 58, 255, 0.2);
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">CareerCounselling</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="howitworks.html">How It Works</a></li>
+        <li><a href="connect-mentors.html" class="active">Mentors</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li class="auth-btns" id="loginNav">
+          <a href="login.html" class="login-btn">Login</a>
+        </li>
+        <li class="auth-btns" id="signupNav">
+          <a href="register.html" class="signup-btn">Sign Up</a>
+        </li>
+      </ul>
+      <div class="menu-icon" id="menuToggle">☰</div>
+    </nav>
+
+    <section class="mentors-hero">
+      <h1>Connect with Mentors</h1>
+      <p>
+        Browse our verified mentors and counselors. Book a session or send a
+        message to get personalized career guidance!
+      </p>
+    </section>
+
+    <div class="login-note">
+      Note: You need to login to message or book a session with a mentor.
+    </div>
+
+    <div class="mentor-container">
+      <div class="filter-section">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="🔍 Search mentors..."
+        />
+      </div>
+      <div class="mentor-list" id="mentorList">
+        <p>Loading mentors...</p>
+      </div>
+    </div>
+
+    <!-- Modal for Mentor Message/Booking -->
+    <div class="modal-bg" id="mentorModalBg">
+      <div class="mentor-modal" id="mentorModal"></div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-bottom">
+        <p>© 2025 CareerCounselling. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      let mentors = [];
+
+      // (isLoggedIn function can stay, but is not needed for submit redirect now)
+
+      // Fetch mentors from backend
+      async function fetchMentors() {
+        try {
+          const res = await fetch("/api/auth/counsellors");
+          const data = await res.json();
+          if (data.success) {
+            mentors = data.counsellors.map((c, i) => ({
+              name: c.fullname,
+              email: c.email,
+              phone: c.phone,
+              fees: c.fees || "N/A",
+              upiId: c.upiId || "",
+              avatar: `https://randomuser.me/api/portraits/${
+                i % 2 === 0 ? "men" : "women"
+              }/${30 + i}.jpg`,
+              bio: c.fees
+                ? `Session Fees: ₹${c.fees}`
+                : "Verified Career Counsellor",
+            }));
+            displayMentors(mentors);
+          } else {
+            document.getElementById("mentorList").innerHTML =
+              "<p>No mentors found.</p>";
+          }
+        } catch (err) {
+          document.getElementById("mentorList").innerHTML =
+            "<p>Failed to load mentors.</p>";
+        }
+      }
+
+      function displayMentors(list) {
+        const container = document.getElementById("mentorList");
+        container.innerHTML = "";
+
+        if (list.length === 0) {
+          container.innerHTML = "<p>No mentors found.</p>";
+          return;
+        }
+
+        list.forEach((mentor, idx) => {
+          const card = document.createElement("div");
+          card.classList.add("mentor-card");
+
+          card.innerHTML = `
+          <img class="mentor-avatar" src="${mentor.avatar}" alt="${mentor.name}"/>
+          <h3>${mentor.name}</h3>
+          <div class="mentor-field">Counsellor</div>
+          <div class="mentor-bio">${mentor.bio}</div>
+          <div class="mentor-contact"><span style="font-size:1.1em;">📧</span> ${mentor.email}</div>
+          <div class="mentor-actions">
+            <button class="mentor-btn" data-idx="${idx}" data-action="message">Message</button>
+            <button class="mentor-btn" data-idx="${idx}" data-action="book">Book Session</button>
+          </div>
+        `;
+
+          card.querySelectorAll(".mentor-btn").forEach((btn) => {
+            const action = btn.getAttribute("data-action");
+            btn.onclick = function () {
+              showMentorModal(idx, action);
+            };
+          });
+
+          container.appendChild(card);
+        });
+      }
+
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", function () {
+          const searchVal = this.value.toLowerCase();
+          const filtered = mentors.filter(
+            (mentor) =>
+              mentor.name.toLowerCase().includes(searchVal) ||
+              mentor.email.toLowerCase().includes(searchVal)
+          );
+          displayMentors(filtered);
+        });
+
+      function showMentorModal(idx, action) {
+        const modalBg = document.getElementById("mentorModalBg");
+        const modal = document.getElementById("mentorModal");
+        const mentor = mentors[idx];
+        modal.innerHTML = `
+        <button class="modal-close" id="modalCloseBtn">&times;</button>
+        <img class="mentor-avatar" src="${mentor.avatar}" alt="${mentor.name}"/>
+        <h2>${
+          mentor.name
+        } <span style="font-size:0.9em;color:#43e97b;">(Counsellor)</span></h2>
+        <div class="modal-section">${mentor.bio}</div>
+        <div class="modal-section" style="color:#888;font-size:0.97em;">📧 ${
+          mentor.email
+        }</div>
+        ${
+          action === "message"
+            ? `
+          <form id="mentorMsgForm" style="margin-top:16px;">
+            <textarea style="width:95%;min-height:60px;border-radius:8px;padding:8px;border:1px solid #d1d5fa;font-family:inherit;font-size:1em;" placeholder="Type your message..." required></textarea>
+            <br>
+            <button type="submit" class="mentor-btn" style="margin-top:8px;">Send Message</button>
+          </form>
+        `
+            : `
+          <form id="mentorBookForm" style="margin-top:16px;">
+            <label style="font-size:0.97em;">Select Date: <input type="date" required style="border-radius:6px;padding:4px;font-size:1em;border:1px solid #d1d5fa;"/></label>
+            <br>
+            <button type="submit" class="mentor-btn" style="margin-top:8px;">Book Session</button>
+          </form>
+        `
+        }
+      `;
+        modalBg.classList.add("active");
+        document.getElementById("modalCloseBtn").onclick = function () {
+          modalBg.classList.remove("active");
+        };
+        modalBg.onclick = function (e) {
+          if (e.target === modalBg) modalBg.classList.remove("active");
+        };
+
+        // Always redirect to login.html on form submit
+        if (action === "message") {
+          document.getElementById("mentorMsgForm").onsubmit = function (e) {
+            e.preventDefault();
+            window.location.href = "login.html";
+          };
+        } else {
+          document.getElementById("mentorBookForm").onsubmit = function (e) {
+            e.preventDefault();
+            window.location.href = "login.html";
+          };
+        }
+      }
+
+      document.getElementById("menuToggle").onclick = function () {
+        document.getElementById("navLinks").classList.toggle("show");
+      };
+
+      // On page load, fetch mentors from backend
+      fetchMentors();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data-Driven Insights | CareerGuide</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Extra styling for insights page (add this in style.css for global use) */
+    .insights-main {
+      max-width: 1000px;
+      margin: 40px auto 0 auto;
+      padding: 24px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(76, 81, 255, 0.10);
+    }
+    .insights-main h1 {
+      color: #4a3aff;
+      text-align: center;
+      margin-bottom: 32px;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+    .insights-section, .recommend-section, .trends-section {
+      margin-bottom: 40px;
+    }
+    .insights-section h2,
+    .recommend-section h2,
+    .trends-section h2 {
+      color: #6c63ff;
+      margin-bottom: 18px;
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+    }
+    .recommend-section ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .recommend-section li {
+      background: #f3f3ff;
+      color: #4a3aff;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 8px rgba(76, 81, 255, 0.08);
+      transition: background 0.2s;
+    }
+    .recommend-section li:hover {
+      background: #e4e4fa;
+    }
+    .charts-flex {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .chart-container {
+      background: #f3f3ff;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(76, 81, 255, 0.07);
+      width: 350px;
+      min-width: 280px;
+      max-width: 100%;
+    }
+    @media (max-width: 900px) {
+      .charts-flex { flex-direction: column; gap: 24px; }
+      .chart-container { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar (same as your index.html) -->
+  <nav class="navbar">
+    <div class="logo">CareerCounselling</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="careeroption.html">Careers</a></li>
+      <li><a href="assessment.html">Assessments</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li class="auth-btns"><a href="login.html" class="login-btn">Login</a></li>
+      <li class="auth-btns"><a href="register.html" class="signup-btn">Sign Up</a></li>
+    </ul>
+    <div class="menu-icon" id="menuToggle">☰</div>
+  </nav>
+
+  <main class="insights-main">
+    <h1>Data-Driven Insights</h1>
+    <div class="charts-flex">
+      <section class="insights-section chart-container">
+        <h2>Your Progress</h2>
+        <canvas id="progressChart" width="340" height="220"></canvas>
+      </section>
+      <section class="trends-section chart-container">
+        <h2>Career Trends</h2>
+        <canvas id="trendChart" width="340" height="220"></canvas>
+      </section>
+    </div>
+    <section class="recommend-section">
+      <h2>Recommended Careers for You</h2>
+      <ul>
+        <li>Software Engineer</li>
+        <li>Data Scientist</li>
+        <li>Product Manager</li>
+        <li>Chartered Accountant</li>
+        <li>UX Designer</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer (same as your index.html) -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>CareerGuide</h3>
+        <p>
+          Your one-stop solution to explore, assess, and build your dream
+          career path. Designed for the future, powered by AI.
+        </p>
+      </div>
+      <div class="footer-section links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="assessment.html">Assessment</a></li>
+          <li><a href="careeroption.html">Top Careers</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </div>
+      <div class="footer-section contact">
+        <h4>Contact Us</h4>
+        <p>Email: support@careerguide.com</p>
+        <p>Phone: +91 98765 43210</p>
+        <div class="socials">
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook--v1.png"/></a>
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/twitter--v1.png"/></a>
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/linkedin.png"/></a>
+          <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"/></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 CareerGuide. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Chart.js scripts -->
+  <script>
+    // Progress Chart
+    const ctx = document.getElementById('progressChart').getContext('2d');
+    const progressChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Assessment', 'Quiz', 'Profile Completion'],
+        datasets: [{
+          label: 'Your Scores',
+          data: [85, 72, 90], // Example data, you can make it dynamic
+          backgroundColor: ['#4a3aff', '#6c63ff', '#a3a1fb']
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, max: 100 }
+        }
+      }
+    });
+
+    // Career Trends Chart
+    const ctx2 = document.getElementById('trendChart').getContext('2d');
+    const trendChart = new Chart(ctx2, {
+      type: 'pie',
+      data: {
+        labels: ['Engineering', 'Medical', 'Commerce', 'Design'],
+        datasets: [{
+          data: [40, 25, 20, 15], // Example data
+          backgroundColor: ['#4a3aff', '#6c63ff', '#a3a1fb', '#f3c623']
+        }]
+      },
+      options: {
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

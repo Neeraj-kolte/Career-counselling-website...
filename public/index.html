@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CareerCounselling | Career Counselling</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      #chatbot-launcher {
+        animation: chatbot-pulse 2.5s infinite;
+      }
+      @keyframes chatbot-pulse {
+        0% {
+          box-shadow: 0 4px 24px rgba(75, 139, 190, 0.25);
+        }
+        50% {
+          box-shadow: 0 8px 32px rgba(75, 139, 190, 0.45);
+        }
+        100% {
+          box-shadow: 0 4px 24px rgba(75, 139, 190, 0.25);
+        }
+      }
+      #chatbot-launcher:hover {
+        transform: scale(1.09);
+        box-shadow: 0 12px 40px rgba(75, 139, 190, 0.5);
+        transition: transform 0.18s, box-shadow 0.18s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-blob"></div>
+    <div class="bg-animated"></div>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">CareerCounselling</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="indexfeature.html">Students</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li class="auth-btns" id="loginNav">
+          <a href="login.html" class="login-btn">Login</a>
+        </li>
+        <li class="auth-btns" id="signupNav">
+          <a href="register.html" class="signup-btn">Sign Up</a>
+        </li>
+      </ul>
+      <div class="menu-icon" id="menuToggle">☰</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-modern">
+      <div class="hero-content">
+        <h1 id="heroText"></h1>
+        <p>
+          Unlock your potential with smart guidance, real mentors, and
+          AI-powered assessments.
+        </p>
+        <a href="register.html" class="hero-btn" id="getStartedBtn"
+          >Get Started</a
+        >
+      </div>
+      <div class="hero-img">
+        <img src="undraw_organizing-data_uns9.svg" alt="Career illustration" />
+      </div>
+    </header>
+
+    <!-- Public Features Section -->
+    <section class="features-modern">
+      <h2 class="section-title">How CareerCounselling Helps You</h2>
+      <div class="features-grid" id="featuresGrid">
+        <div class="feature-card reveal">
+          <span class="feature-icon" style="background: #ffb347"
+            ><img
+              src="https://img.icons8.com/ios-filled/40/ffffff/brain.png"
+              alt="AI Icon"
+          /></span>
+          <h3>Why Career Counselling?</h3>
+          <p>Find out how professional guidance can change your future.</p>
+          <a href="whycareercounselling.html" class="feature-link"
+            >Learn More &rarr;</a
+          >
+        </div>
+        <div class="feature-card reveal">
+          <span class="feature-icon" style="background: #779ecb"
+            ><img
+              src="https://img.icons8.com/ios-filled/40/ffffff/combo-chart.png"
+              alt="Assessment Icon"
+          /></span>
+          <h3>How It Works</h3>
+          <p>
+            Discover our process and how we help you choose the right career.
+          </p>
+          <a href="howitworks.html" class="feature-link">Our Process &rarr;</a>
+        </div>
+        <div class="feature-card reveal">
+          <span class="feature-icon" style="background: #ff6961"
+            ><img
+              src="https://img.icons8.com/ios-filled/40/ffffff/books.png"
+              alt="Resources Icon"
+          /></span>
+          <h3>Career Resources</h3>
+          <p>Read guides, tips, and stories to inspire your journey.</p>
+          <a href="resources.html" class="feature-link"
+            >Explore Resources &rarr;</a
+          >
+        </div>
+        <div class="feature-card reveal">
+          <span class="feature-icon" style="background: #fdfd96"
+            ><img
+              src="https://img.icons8.com/ios-filled/40/4a3aff/phone.png"
+              alt="Contact Icon"
+          /></span>
+          <h3>Contact Us</h3>
+          <p>Have questions? Reach out for support and guidance.</p>
+          <a href="contact.html" class="feature-link">Contact &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-modern">
+      <h2>Ready to Build Your Dream Career?</h2>
+      <p>
+        Join thousands of students already discovering their ideal path with
+        CareerCounselling.
+      </p>
+      <a href="register.html" class="cta-btn">Get Started Now</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section about">
+          <h3>CareerCounselling</h3>
+          <p>
+            Your one-stop solution to explore, assess, and build your dream
+            career path. Designed for the future, powered by AI.
+          </p>
+        </div>
+        <div class="footer-section links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+          </ul>
+        </div>
+        <div class="footer-section contact">
+          <h4>Contact Us</h4>
+          <p>Email: support@CareerCounselling.com</p>
+          <p>Phone: +91 98765 43210</p>
+          <div class="socials">
+            <a href="#"
+              ><img
+                src="https://img.icons8.com/ios-filled/24/ffffff/facebook--v1.png"
+            /></a>
+            <a href="#"
+              ><img
+                src="https://img.icons8.com/ios-filled/24/ffffff/twitter--v1.png"
+            /></a>
+            <a href="#"
+              ><img
+                src="https://img.icons8.com/ios-filled/24/ffffff/linkedin.png"
+            /></a>
+            <a href="#"
+              ><img
+                src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"
+            /></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 CareerCounselling. All Rights Reserved.</p>
+      </div>
+    </footer>
+    <!-- Chatbot Launcher Icon (corner me) -->
+    <div
+      id="chatbot-launcher"
+      style="
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        z-index: 9999;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #4b8bbe 60%, #6fd6ff 100%);
+        box-shadow: 0 4px 24px rgba(75, 139, 190, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.15s, box-shadow 0.3s;
+      "
+    >
+      <!-- SVG Icon (or your icon) -->
+      <svg width="38" height="38" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="22" fill="#fff" />
+        <ellipse cx="24" cy="27" rx="12" ry="8" fill="#4B8BBE" />
+        <ellipse cx="18" cy="23" rx="2.5" ry="2.5" fill="#fff" />
+        <ellipse cx="30" cy="23" rx="2.5" ry="2.5" fill="#fff" />
+        <rect x="20" y="29" width="8" height="2.5" rx="1.25" fill="#fff" />
+        <rect x="13" y="16" width="22" height="6" rx="3" fill="#6fd6ff" />
+        <circle cx="16" cy="19" r="1" fill="#4B8BBE" />
+        <circle cx="32" cy="19" r="1" fill="#4B8BBE" />
+      </svg>
+    </div>
+
+    <!-- Centered Chatbot Popup -->
+    <div
+      id="chatbot-popup"
+      style="
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 700px;
+        height: 700px;
+        z-index: 10000;
+        box-shadow: 0 8px 48px rgba(75, 139, 190, 0.35);
+        border-radius: 28px;
+        overflow: hidden;
+        background: #fff;
+        transition: box-shadow 0.2s;
+      "
+    >
+      <!-- Close Button -->
+      <div style="position: absolute; top: 16px; right: 24px; z-index: 2">
+        <button
+          onclick="document.getElementById('chatbot-popup').style.display='none';"
+          style="
+            background: #4b8bbe;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #4b8bbe33;
+          "
+          title="Close"
+        >
+          &times;
+        </button>
+      </div>
+      <!-- Chatbot Iframe -->
+      <iframe
+        src="http://localhost:8501"
+        style="width: 100%; height: 100%; border: none"
+        title="Chatbot"
+      ></iframe>
+    </div>
+
+    <script>
+      // Show/hide popup on icon click
+      const launcher = document.getElementById("chatbot-launcher");
+      const popup = document.getElementById("chatbot-popup");
+      launcher.onclick = () => {
+        popup.style.display = "block";
+      };
+    </script>
+
+    <!-- Scripts (Typing Animation, Navbar, Reveal) -->
+    <script>
+      // Typing Animation for Hero Text
+      const heroText = "Discover Your Perfect Career Path";
+      const heroTextElem = document.getElementById("heroText");
+      let idx = 0;
+      function typeWriter() {
+        if (idx < heroText.length) {
+          heroTextElem.innerHTML += heroText.charAt(idx);
+          idx++;
+          setTimeout(typeWriter, 45);
+        }
+      }
+      typeWriter();
+
+      // Feature Cards Reveal Animation
+      function revealCardsOnScroll() {
+        const reveals = document.querySelectorAll(".reveal");
+        for (let i = 0; i < reveals.length; i++) {
+          const windowHeight = window.innerHeight;
+          const elementTop = reveals[i].getBoundingClientRect().top;
+          const elementVisible = 120;
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          } else {
+            reveals[i].classList.remove("active");
+          }
+        }
+      }
+      window.addEventListener("scroll", revealCardsOnScroll);
+      window.addEventListener("DOMContentLoaded", revealCardsOnScroll);
+
+      // Responsive Navbar Menu (Mobile)
+      document.getElementById("menuToggle").onclick = function () {
+        document.getElementById("navLinks").classList.toggle("show");
+      };
+    </script>
+  </body>
+</html>

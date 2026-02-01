@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | CareerCounselling</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Reset */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Poppins", Arial, sans-serif;
+        background: linear-gradient(135deg, #6a5eff, #4a3aff);
+        color: #222;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      /* Navbar */
+      /* Google Fonts Import (add in <head> of your HTML too) */
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap");
+
+      /* Reset & Base */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Montserrat", "Poppins", Arial, sans-serif;
+        background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+        color: #232946;
+        min-height: 100vh;
+        letter-spacing: 0.03em;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.18);
+      }
+      .logo {
+        font-weight: 900;
+        font-size: 2.1rem;
+        color: #7f5af0;
+        letter-spacing: 2px;
+        font-family: "Montserrat", sans-serif;
+        text-shadow: 0 2px 8px #d1d9ff66;
+      }
+      .nav-links {
+        display: flex;
+        gap: 22px;
+        list-style: none;
+      }
+      .nav-links li a {
+        color: #7f5af0;
+        text-decoration: none;
+        font-weight: 700;
+        padding: 9px 18px;
+        border-radius: 10px;
+        transition: background 0.25s, color 0.25s;
+        font-size: 1.08rem;
+      }
+      .nav-links li a:hover {
+        background: #7f5af0;
+        color: #fff;
+      }
+      .auth-btns .login-btn {
+        border: 2px solid #7f5af0;
+        padding: 6px 18px;
+        background: transparent;
+        border-radius: 10px;
+        color: #7f5af0;
+        font-weight: 700;
+        transition: background 0.3s, color 0.3s;
+      }
+      .auth-btns .login-btn:hover {
+        background: #7f5af0;
+        color: #fff;
+      }
+      .auth-btns .signup-btn {
+        background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+        color: #232946;
+        padding: 8px 22px;
+        font-weight: 900;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px #43e97b33;
+        border: none;
+        margin-left: 4px;
+        transition: box-shadow 0.3s, background 0.3s, color 0.3s;
+      }
+      .auth-btns .signup-btn:hover {
+        background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
+        color: #fff;
+        box-shadow: 0 8px 32px #43e97b55;
+      }
+
+      /* Mobile menu icon */
+      .menu-icon {
+        display: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #7f5af0;
+      }
+
+      /* Responsive Navbar Toggle (optional) */
+      .menu-icon {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: white;
+      }
+      @media (max-width: 768px) {
+        nav.navbar ul.nav-links {
+          display: none;
+          flex-direction: column;
+          background: #3f37c9;
+          position: absolute;
+          top: 60px;
+          right: 30px;
+          width: 180px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(74, 58, 255, 0.4);
+        }
+        nav.navbar ul.nav-links.show {
+          display: flex;
+        }
+        .menu-icon {
+          display: block;
+        }
+      }
+
+      /* Main Container */
+      main.about-container {
+        background: white;
+        border-radius: 20px 20px 0 0;
+        max-width: 960px;
+        margin: 40px auto 60px;
+        padding: 40px 40px 60px;
+        box-shadow: 0 12px 40px rgba(74, 58, 255, 0.25);
+        flex-grow: 1;
+      }
+      main.about-container h1 {
+        font-size: 3rem;
+        color: #4a3aff;
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 12px;
+        letter-spacing: 1.5px;
+      }
+      main.about-container p.intro {
+        max-width: 720px;
+        margin: 0 auto 40px auto;
+        font-size: 1.2rem;
+        color: #555;
+        text-align: center;
+        line-height: 1.6;
+      }
+
+      /* About Section */
+      .about-section {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 60px;
+      }
+      .about-text {
+        flex: 1 1 400px;
+        max-width: 480px;
+      }
+      .about-text h2 {
+        font-size: 2rem;
+        color: #4a3aff;
+        margin-bottom: 18px;
+        font-weight: 700;
+        border-bottom: 3px solid #43e97b;
+        padding-bottom: 6px;
+      }
+      .about-text p {
+        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.7;
+        margin-bottom: 24px;
+      }
+      .about-image {
+        flex: 1 1 380px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .about-image img {
+        max-width: 100%;
+        border-radius: 18px;
+        box-shadow: 0 14px 48px rgba(74, 58, 255, 0.2);
+        transition: transform 0.3s ease;
+      }
+      .about-image img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Team Section */
+      .team-section {
+        text-align: center;
+      }
+      .team-section h2 {
+        font-size: 2.8rem;
+        color: #4a3aff;
+        font-weight: 900;
+        margin-bottom: 50px;
+        letter-spacing: 1.2px;
+      }
+      .team-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 32px;
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      .team-card {
+        background: #f7f9ff;
+        border-radius: 20px;
+        padding: 28px 24px 32px;
+        box-shadow: 0 16px 40px rgba(74, 58, 255, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: default;
+      }
+      .team-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 24px 60px rgba(74, 58, 255, 0.3);
+      }
+      .team-photo {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(74, 58, 255, 0.2);
+      }
+      .team-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .team-name {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #4a3aff;
+        margin-bottom: 6px;
+      }
+      .team-role {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 14px;
+        font-weight: 600;
+      }
+      .team-bio {
+        font-size: 1rem;
+        color: #444;
+        line-height: 1.5;
+      }
+
+      /* Footer */
+      footer.footer {
+        background: #3f37c9;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        box-shadow: 0 -4px 12px rgba(74, 58, 255, 0.3);
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .about-section {
+          flex-direction: column;
+          align-items: center;
+        }
+        main.about-container {
+          margin: 20px 15px 60px;
+          padding: 30px 20px 40px;
+        }
+      }
+      @media (max-width: 480px) {
+        nav.navbar ul.nav-links {
+          flex-direction: column;
+          background: #3f37c9;
+          position: absolute;
+          top: 60px;
+          right: 20px;
+          width: 160px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(74, 58, 255, 0.4);
+          display: none;
+        }
+        nav.navbar ul.nav-links.show {
+          display: flex;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">CareerCounselling</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="indexfeature.html">Students</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li class="auth-btns" id="loginNav">
+          <a href="login.html" class="login-btn">Login</a>
+        </li>
+        <li class="auth-btns" id="signupNav">
+          <a href="register.html" class="signup-btn">Sign Up</a>
+        </li>
+      </ul>
+      <div class="menu-icon" id="menuToggle">☰</div>
+    </nav>
+    <!-- Main Content -->
+    <main class="about-container">
+      <header class="about-header">
+        <h1>About CareerCounselling</h1>
+        <p class="intro">
+          CareerCounselling is a student-focused career counselling platform
+          developed as a college minor project. Our aim is to help students make
+          informed career decisions through modern technology, expert advice,
+          and easy-to-use tools.
+        </p>
+      </header>
+
+      <section class="about-section">
+        <div class="about-text">
+          <h2>Project Objective</h2>
+          <p>
+            The objective of this project is to bridge the gap between students'
+            aspirations and the right career path by providing personalized
+            guidance, career resources, and interactive assessments. We want to
+            make career planning accessible and engaging for every student.
+          </p>
+          <h2>Features</h2>
+          <p>
+            - Career assessment tests<br />
+            - Career information and resources<br />
+            - Mentor/counselor connect<br />
+            - User-friendly dashboard<br />
+            - AI-powered chatbot for instant answers
+          </p>
+        </div>
+        <div class="about-image">
+          <img
+            src="https://st3.depositphotos.com/7850392/13570/v/450/depositphotos_135701078-stock-illustration-careers-professional-ocuppations-illustration-b.jpg"
+            alt="Career Progress Illustration"
+          />
+        </div>
+      </section>
+
+      <!-- <section class="team-section">
+      <h2>Meet Our Team</h2>
+      <div class="team-cards">
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Aman Verma" />
+          </div>
+          <div class="team-name">Aman Verma</div>
+          <div class="team-role">Frontend Developer</div>
+          <div class="team-bio">UI/UX design and frontend development.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Singh" />
+          </div>
+          <div class="team-name">Priya Singh</div>
+          <div class="team-role">Backend Developer</div>
+          <div class="team-bio">API, database, and authentication logic.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Rohit Sharma" />
+          </div>
+          <div class="team-name">Rohit Sharma</div>
+          <div class="team-role">Project Lead</div>
+          <div class="team-bio">Project planning, integration, and documentation.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sneha Patel" />
+          </div>
+          <div class="team-name">Sneha Patel</div>
+          <div class="team-role">Community Manager</div>
+          <div class="team-bio">Fostering a supportive environment for learners and mentors to connect and grow.</div>
+        </div>
+      </div>
+    </section> -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section about">
+          <h3>CareerCounselling</h3>
+          <p>
+            Your one-stop solution to explore, assess, and build your dream
+            career path. Designed for the future, powered by AI.
+          </p>
+        </div>
+        <div class="footer-section links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About Us</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+          </ul>
+        </div>
+        <div class="footer-section contact">
+          <h4>Contact Us</h4>
+          <p>Email: support@CareerCounselling.com</p>
+          <p>Phone: +91 98765 43210</p>
+          <div class="socials">
+            <a href="#"
+              ><img
+                src="https://img.icons8.com/ios-filled/24/ffffff/facebook--v1.png"
+            /></a>
+            <a href="#"
+              ><img
+                src="https://img.icons8.com/ios-filled/24/ffffff/twitter--v1.png"
+            /></a>
+            <a href="#"
+              ><img
+                src="https://img.icons8.com/ios-filled/24/ffffff/linkedin.png"
+            /></a>
+            <a href="#"
+              ><img
+                src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"
+            /></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 CareerCounselling. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Responsive Navbar Menu (Mobile)
+      document.getElementById("menuToggle").onclick = function () {
+        document.getElementById("navLinks").classList.toggle("show");
+      };
+    </script>
+  </body>
+</html>

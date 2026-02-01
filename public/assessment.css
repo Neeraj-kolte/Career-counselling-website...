@@ -1,0 +1,124 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #5f27cd, #341f97);
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.assessment-container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.question {
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  margin: 8px 0;
+  font-size: 1rem;
+}
+
+.submit-btn {
+  background-color: #9b59b6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: block;
+  margin: 0 auto;
+}
+
+.submit-btn:hover {
+  background-color: #8e44ad;
+}
+
+.result-box {
+  margin-top: 30px;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 15px;
+  background-color: #1e272e;
+  border-radius: 8px;
+  display: none;
+}
+
+.progress-container {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  height: 16px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: #9b59b6;
+  transition: width 0.3s ease;
+  border-radius: 10px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #1e1e2f;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content button {
+  background-color: #9b59b6;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: white;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}

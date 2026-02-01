@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard | CareerCounselling</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+    <style>
+      /* Profile Modal Styles */
+      .profile-modal {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .profile-modal-content {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 8px 32px #6a5eff22;
+        padding: 36px 28px 28px 28px;
+        max-width: 400px;
+        width: 95vw;
+        position: relative;
+        animation: fadeInProfile 0.3s;
+        /* Add these lines: */
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      @keyframes fadeInProfile {
+        from {
+          transform: scale(0.9);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .close-profile-modal {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        font-size: 2rem;
+        color: #6a5eff;
+        cursor: pointer;
+      }
+      .profile-modal-content h2 {
+        margin-top: 0;
+      }
+      .profile-modal-content .profile-avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: #e9e9ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: #6a5eff;
+        font-weight: 900;
+        margin: 0 auto 12px auto;
+      }
+      .profile-modal-content .profile-info p {
+        margin: 6px 0;
+      }
+      .profile-modal-content .profile-btn {
+        background: #6a5eff;
+        color: #fff;
+        border: none;
+        border-radius: 18px;
+        padding: 8px 20px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        margin: 10px 0;
+      }
+      .profile-modal-content .profile-btn.logout-btn {
+        background: #e63946;
+      }
+      @media (max-width: 700px) {
+        .profile-modal-content {
+          padding: 16px 4px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">CareerCounselling</div>
+      <ul class="nav-links">
+        <li><a href="careeroption.html">Career Options</a></li>
+        <li><a href="newassessment.html">Assessments</a></li>
+        <li>
+          <a href="#" onclick="openProfileModal();return false;">Profile</a>
+        </li>
+        <li>
+          <a href="index.html"> <button class="logout">Logout</button></a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- User Info Section -->
+    <section class="user-info">
+      <h2>Welcome, <span id="user-name"></span>!</h2>
+      <p>Email: <span id="user-email"></span></p>
+      <p>Role: <span id="user-role"></span></p>
+      <p>Phone: <span id="user-phone"></span></p>
+    </section>
+
+    <!-- User Dashboard Section -->
+    <section id="user-dashboard" class="dashboard" style="display: none">
+      <h1 class="main-heading">Your Career Dashboard</h1>
+      <div class="card-container">
+        <a href="careeroption.html" class="card-link">
+          <div class="card">
+            <h2>Explore Careers</h2>
+            <p>Find the best career paths based on your interests.</p>
+          </div>
+        </a>
+        <a href="newassessment.html" class="card-link">
+          <div class="card">
+            <h2>Take Assessment</h2>
+            <p>Get personalized recommendations in just a few questions.</p>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="card-link"
+          onclick="openProfileModal();return false;"
+        >
+          <div class="card">
+            <h2>Your Profile</h2>
+            <p>Update your information and view saved results.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Counselor Dashboard Section -->
+    <section id="counselor-dashboard" class="dashboard" style="display: none">
+      <h1 class="main-heading">Counselor Dashboard</h1>
+      <div class="card-container">
+        <a href="students.html" class="card-link">
+          <div class="card">
+            <h2>Student List</h2>
+            <p>View and manage your assigned students.</p>
+          </div>
+        </a>
+        <a href="appointments.html" class="card-link">
+          <div class="card">
+            <h2>Appointments</h2>
+            <p>Manage your counseling appointments.</p>
+          </div>
+        </a>
+        <a href="reports.html" class="card-link">
+          <div class="card">
+            <h2>Reports</h2>
+            <p>View counseling reports and analytics.</p>
+          </div>
+        </a>
+      </div>
+      <!-- <div class="button-container">
+        <button
+          class="button"
+          onclick="window.location.href='../contactcounsellors/contact.html'"
+        >
+          📞 Contact Students
+        </button>
+      </div> -->
+    </section>
+
+    <section id="counsellor-list-section">
+      <h2>Available Counsellors</h2>
+      <div id="counsellor-list"></div>
+    </section>
+
+    <!-- Request Modal HTML -->
+    <div id="request-modal" style="display: none">
+      <div class="modal-content">
+        <span
+          onclick="closeRequestModal()"
+          style="float: right; cursor: pointer"
+          >&times;</span
+        >
+        <h2>Request Counselling</h2>
+        <div><b>Pay to UPI ID:</b> <span id="counsellor-upi"></span></div>
+        <div><b>Fee:</b> <span id="counsellor-fee"></span></div>
+        <div>
+          <input
+            id="payment-ref"
+            type="text"
+            placeholder="Enter UPI payment reference"
+          />
+        </div>
+        <!-- <div>
+          <label>Contact Type:</label>
+          <select id="contact-type">
+            <option value="email">Email</option>
+            <option value="phone">Phone</option>
+            <option value="video">Video Call</option>
+          </select>
+        </div> -->
+        <button onclick="sendCounsellingRequest()">Send Request</button>
+      </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" style="display: none">
+      <div class="payment-modal-backdrop"></div>
+      <div class="payment-modal-card">
+        <span class="payment-modal-close" onclick="closePaymentModal()"
+          >&times;</span
+        >
+        <h2 class="payment-modal-title">Pay Counsellor</h2>
+        <div class="payment-modal-details">
+          <div><b>Pay to UPI ID:</b> <span id="payment-upi"></span></div>
+          <div><b>Fee:</b> <span id="payment-fee"></span></div>
+        </div>
+        <form id="payment-form" autocomplete="off">
+          <div class="input-row">
+            <label for="cardNumber">Card Number</label>
+            <input
+              type="text"
+              id="cardNumber"
+              name="cardNumber"
+              maxlength="16"
+              value="1234123412341234"
+              required
+            />
+          </div>
+          <div class="input-row">
+            <label for="cardHolder">Name on Card</label>
+            <input type="text" id="cardHolder" name="cardHolder" required />
+          </div>
+          <div class="flex-row">
+            <div class="input-row flex1">
+              <label for="expiry">Expiry (MM/YY)</label>
+              <input
+                type="text"
+                id="expiry"
+                name="expiry"
+                maxlength="5"
+                value="12/25"
+                required
+              />
+            </div>
+            <div class="input-row flex1">
+              <label for="cvv">CVV</label>
+              <input
+                type="text"
+                id="cvv"
+                name="cvv"
+                maxlength="3"
+                value="123"
+                required
+              />
+            </div>
+          </div>
+          <div class="input-row">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" name="amount" min="1" required />
+          </div>
+          <button type="submit" class="pay-btn">Pay Now</button>
+        </form>
+        <div id="payment-status" class="payment-status"></div>
+      </div>
+    </div>
+
+    <!-- Profile Modal (Initially hidden) -->
+    <div id="profile-modal" class="profile-modal" style="display: none">
+      <div class="profile-modal-content">
+        <span class="close-profile-modal" onclick="closeProfileModal()"
+          >&times;</span
+        >
+        <div id="profile-modal-body"></div>
+      </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script>
+      // PROFILE MODAL JS
+      async function openProfileModal() {
+        const userStr = localStorage.getItem("user");
+        if (!userStr) {
+          alert("Please login first.");
+          window.location.href = "login.html";
+          return;
+        }
+        const user = JSON.parse(userStr);
+
+        // Fetch assessment history
+        let res = await fetch(`/api/user/assessments?userId=${user._id}`);
+        let data = await res.json();
+
+        // Build HTML
+        let html = `
+          <div class="profile-avatar">${(user.name ||
+            user.fullname ||
+            "U")[0].toUpperCase()}</div>
+          <h2>${user.name || user.fullname || "User"}</h2>
+          <div style="color:#43e97b;font-weight:700;">${
+            user.role
+              ? user.role.charAt(0).toUpperCase() + user.role.slice(1)
+              : ""
+          }</div>
+          <div class="profile-info">
+            <p><b>Email:</b> ${user.email || ""}</p>
+            <p><b>Phone:</b> ${user.phone || ""}</p>
+            <p><b>Registered:</b> ${
+              user.createdAt
+                ? new Date(user.createdAt).toLocaleDateString()
+                : ""
+            }</p>
+          </div>
+          <div style="margin:18px 0 10px 0;"><b>Latest Assessment:</b></div>
+        `;
+
+        if (data.success && data.assessments && data.assessments.length > 0) {
+          const latest = data.assessments[0];
+          html += renderProfileAssessment(latest);
+        } else {
+          html += `<div style="color:#888;">No assessment found.</div>`;
+        }
+
+        html += `
+          <button class="profile-btn" onclick="window.location.href='newassessment.html'">Retake Assessment</button>
+          <button class="profile-btn logout-btn" onclick="logoutUser()">Logout</button>
+        `;
+
+        document.getElementById("profile-modal-body").innerHTML = html;
+        document.getElementById("profile-modal").style.display = "flex";
+      }
+
+      function closeProfileModal() {
+        document.getElementById("profile-modal").style.display = "none";
+      }
+
+      function renderProfileAssessment(assessment) {
+        let html = `<div style="background:#f9f9ff;border-radius:12px;padding:12px 10px;margin-bottom:10px;">`;
+        if (assessment.result && assessment.result.careers) {
+          html += `<div style="margin-bottom:6px;"><b>Top Careers:</b></div>`;
+          assessment.result.careers.forEach((career) => {
+            let linksHtml = "";
+            if (career.links && Array.isArray(career.links)) {
+              linksHtml = career.links
+                .map(
+                  (link) =>
+                    `<a href="${link.url}" target="_blank" style="margin-right:10px;color:#4a3aff;font-weight:600;text-decoration:underline;">${link.label}</a>`
+                )
+                .join(" ");
+            }
+            html += `<div style="margin-bottom:6px;"><b>${career.name}</b>: ${career.summary}<br>${linksHtml}</div>`;
+          });
+        }
+        if (assessment.result && assessment.result.breakdown) {
+          html += `<div style="margin:10px 0 0 0;"><b>Scores:</b> `;
+          Object.entries(assessment.result.breakdown).forEach(([k, v]) => {
+            html += `<span style="margin-right:10px;">${k}: ${v}</span>`;
+          });
+          html += `</div>`;
+        }
+        html += `<div style="font-size:0.92rem;color:#888;margin-top:6px;">Attempted: ${new Date(
+          assessment.createdAt
+        ).toLocaleString()}</div>`;
+        html += `</div>`;
+        return html;
+      }
+
+      function logoutUser() {
+        localStorage.removeItem("user");
+        window.location.href = "login.html";
+      }
+    </script>
+    <!-- Toast Notification -->
+    <div id="toast-notification" class="toast-notification"></div>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career Quiz</title>
+    <link rel="stylesheet" href="quiz.css" />
+  </head>
+  <body>
+    <div class="quiz-container">
+      <h1>Career Assessment Quiz</h1>
+      <p>
+        Answer a few questions to discover careers that match your interests!
+      </p>
+
+      <form id="quizForm">
+        <div class="question">
+          <h3>1. What do you enjoy the most?</h3>
+          <label
+            ><input type="radio" name="q1" value="tech" /> Solving technical
+            problems</label
+          >
+          <label
+            ><input type="radio" name="q1" value="design" /> Designing beautiful
+            interfaces</label
+          >
+          <label
+            ><input type="radio" name="q1" value="management" /> Leading a
+            team</label
+          >
+        </div>
+
+        <div class="question">
+          <h3>2. What would you prefer working on?</h3>
+          <label
+            ><input type="radio" name="q2" value="tech" /> Software or
+            code</label
+          >
+          <label
+            ><input type="radio" name="q2" value="design" /> Logos or
+            visuals</label
+          >
+          <label
+            ><input type="radio" name="q2" value="management" /> Business
+            plans</label
+          >
+        </div>
+
+        <div class="question">
+          <h3>3. Your ideal project would be:</h3>
+          <label
+            ><input type="radio" name="q3" value="tech" /> Building an
+            app</label
+          >
+          <label
+            ><input type="radio" name="q3" value="design" /> Designing a mobile
+            UI</label
+          >
+          <label
+            ><input type="radio" name="q3" value="management" /> Managing
+            timelines and teams</label
+          >
+        </div>
+
+        <div class="question">
+          <h3>4. Which excites you more?</h3>
+          <label
+            ><input type="radio" name="q4" value="tech" /> AI & Robotics</label
+          >
+          <label
+            ><input type="radio" name="q4" value="design" /> Creative visuals &
+            branding</label
+          >
+          <label
+            ><input type="radio" name="q4" value="management" /> Building
+            company strategy</label
+          >
+        </div>
+
+        <div class="question">
+          <h3>5. What role would you pick?</h3>
+          <label
+            ><input type="radio" name="q5" value="tech" /> Software
+            Developer</label
+          >
+          <label
+            ><input type="radio" name="q5" value="design" /> Graphic
+            Designer</label
+          >
+          <label
+            ><input type="radio" name="q5" value="management" /> Product
+            Manager</label
+          >
+        </div>
+
+        <button type="submit">See My Result</button>
+      </form>
+
+      <div id="resultBox" class="result-box" style="display: none">
+        <h2>Your Ideal Career Path:</h2>
+        <p id="resultText"></p>
+      </div>
+    </div>
+
+    <script src="quiz.js"></script>
+  </body>
+</html>

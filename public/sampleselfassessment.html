@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Self Assessment | CareerCounselling</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", Arial, sans-serif;
+        background: linear-gradient(120deg, #6a11cb 0%, #43e97b 100%);
+        color: #232946;
+        min-height: 100vh;
+      }
+      nav.navbar {
+        background: #3f37c9;
+        padding: 18px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        font-weight: 600;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 12px rgba(74, 58, 255, 0.2);
+      }
+      nav.navbar .logo {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 900;
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+        cursor: default;
+      }
+      nav.navbar ul.nav-links {
+        list-style: none;
+        display: flex;
+        gap: 22px;
+        margin: 0;
+        padding: 0;
+      }
+      nav.navbar ul.nav-links li a {
+        color: white;
+        text-decoration: none;
+        padding: 6px 10px;
+        border-radius: 6px;
+        transition: background-color 0.25s;
+      }
+      nav.navbar ul.nav-links li a:hover,
+      nav.navbar ul.nav-links li a.active {
+        background: #43e97b;
+        color: #1b1b1b;
+        font-weight: 700;
+      }
+      .menu-icon {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: white;
+      }
+      @media (max-width: 768px) {
+        nav.navbar ul.nav-links {
+          display: none;
+          flex-direction: column;
+          background: #3f37c9;
+          position: absolute;
+          top: 60px;
+          right: 30px;
+          width: 180px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(74, 58, 255, 0.4);
+        }
+        nav.navbar ul.nav-links.show {
+          display: flex;
+        }
+        .menu-icon {
+          display: block;
+        }
+      }
+
+      .assessment-hero {
+        padding: 60px 20px 30px 20px;
+        text-align: center;
+        background: linear-gradient(100deg, #4a3aff 0%, #43e97b 100%);
+        color: #fff;
+        border-bottom-left-radius: 50px 20px;
+        border-bottom-right-radius: 50px 20px;
+        box-shadow: 0 8px 32px rgba(74, 58, 255, 0.09);
+      }
+      .assessment-hero h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+      }
+      .assessment-hero p {
+        font-size: 1.18rem;
+        color: #f8f8ff;
+        margin-bottom: 0;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .info-section {
+        max-width: 950px;
+        margin: 40px auto 30px auto;
+        padding: 0 20px;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 8px 32px rgba(74, 58, 255, 0.13);
+        color: #232946;
+        text-align: center;
+      }
+      .info-section h2 {
+        color: #4a3aff;
+        margin-top: 0;
+        font-size: 2rem;
+        font-weight: 700;
+      }
+      .info-section ul {
+        text-align: left;
+        max-width: 700px;
+        margin: 18px auto 0 auto;
+        color: #444;
+        font-size: 1.07rem;
+        padding-left: 18px;
+      }
+      .info-section li {
+        margin-bottom: 10px;
+      }
+
+      .quiz-section {
+        max-width: 700px;
+        margin: 40px auto 30px auto;
+        background: #f8f8ff;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px #43e97b18;
+        padding: 32px 20px 24px 20px;
+        color: #232946;
+      }
+      .quiz-section h3 {
+        color: #43e97b;
+        font-size: 1.3rem;
+        margin-top: 0;
+        margin-bottom: 18px;
+        font-weight: 700;
+        text-align: center;
+      }
+      .quiz-q {
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #4a3aff;
+      }
+      .quiz-options label {
+        display: block;
+        margin-bottom: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        color: #232946;
+      }
+      .quiz-btn {
+        margin-top: 16px;
+        padding: 10px 20px;
+        background: linear-gradient(90deg, #43e97b 0%, #4a3aff 100%);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.05rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+        box-shadow: 0 2px 10px #6a11cb22;
+      }
+      .quiz-btn:hover {
+        background: linear-gradient(90deg, #4a3aff 0%, #43e97b 100%);
+        transform: scale(1.04);
+      }
+      .quiz-result {
+        margin-top: 18px;
+        font-size: 1.12rem;
+        color: #43e97b;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      @media (max-width: 600px) {
+        .assessment-hero {
+          padding: 36px 8px 18px 8px;
+        }
+        .info-section {
+          padding: 10px 4px;
+        }
+        .quiz-section {
+          padding: 12px 4px;
+        }
+        .info-section h2 {
+          font-size: 1.3rem;
+        }
+      }
+
+      footer.footer {
+        background: #3f37c9;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        box-shadow: 0 -4px 12px rgba(74, 58, 255, 0.2);
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">CareerCounselling</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li class="auth-btns" id="loginNav">
+          <a href="login.html" class="login-btn">Login</a>
+        </li>
+        <li class="auth-btns" id="signupNav">
+          <a href="register.html" class="signup-btn">Sign Up</a>
+        </li>
+      </ul>
+      <div class="menu-icon" id="menuToggle">☰</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="assessment-hero">
+      <h1>Self Assessment</h1>
+      <p>
+        Self assessment is the first step to discovering your ideal career path.
+        Understand your interests, strengths, and personality to make smarter
+        choices for your future.
+      </p>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+      <h2>Why is Self Assessment Important?</h2>
+      <ul>
+        <li>Helps you identify your unique strengths and interests.</li>
+        <li>
+          Prevents choosing a career just because of peer pressure or trends.
+        </li>
+        <li>Gives you confidence in your decisions.</li>
+        <li>Personalizes your career journey for long-term satisfaction.</li>
+      </ul>
+      <p style="margin-top: 18px">
+        At CareerCounselling, our self assessment uses simple questions to
+        suggest careers that fit you best.
+      </p>
+    </section>
+
+    <!-- Quiz Section (Demo) -->
+    <section class="quiz-section" id="quizSection">
+      <h3>Try a Quick Self Assessment!</h3>
+      <form id="quizForm">
+        <div>
+          <div class="quiz-q">1. Which activity do you enjoy the most?</div>
+          <div class="quiz-options">
+            <label
+              ><input type="radio" name="q1" value="tech" required /> Solving
+              puzzles or coding</label
+            >
+            <label
+              ><input type="radio" name="q1" value="creative" /> Drawing or
+              writing stories</label
+            >
+            <label
+              ><input type="radio" name="q1" value="help" /> Helping friends
+              with problems</label
+            >
+            <label
+              ><input type="radio" name="q1" value="manage" /> Organizing events
+              or leading teams</label
+            >
+          </div>
+        </div>
+        <div style="margin-top: 16px">
+          <div class="quiz-q">2. What is your favorite school subject?</div>
+          <div class="quiz-options">
+            <label
+              ><input type="radio" name="q2" value="tech" required />
+              Math/Science</label
+            >
+            <label
+              ><input type="radio" name="q2" value="creative" />
+              Literature/Art</label
+            >
+            <label
+              ><input type="radio" name="q2" value="help" />
+              Psychology/Biology</label
+            >
+            <label
+              ><input type="radio" name="q2" value="manage" />
+              Business/Commerce</label
+            >
+          </div>
+        </div>
+        <button type="submit" class="quiz-btn">Get My Career Type</button>
+        <div class="quiz-result" id="quizResult"></div>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-bottom">
+        <p>© 2025 CareerCounselling. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Responsive Navbar Menu (Mobile)
+      document.getElementById("menuToggle").onclick = function () {
+        document.getElementById("navLinks").classList.toggle("show");
+      };
+
+      // Simple Demo Quiz Logic
+      document.getElementById("quizForm").onsubmit = function (e) {
+        e.preventDefault();
+        const q1 = document.querySelector('input[name="q1"]:checked').value;
+        const q2 = document.querySelector('input[name="q2"]:checked').value;
+        let result = "";
+        let type = "";
+
+        if (q1 === q2) {
+          type = q1;
+        } else {
+          // If answers differ, pick q1 for variety (or you can randomize)
+          type = q1;
+        }
+
+        switch (type) {
+          case "tech":
+            result =
+              "You have a technical and analytical mindset! Careers in engineering, IT, or data science may suit you.";
+            break;
+          case "creative":
+            result =
+              "You are creative and expressive! Consider careers in design, writing, or media.";
+            break;
+          case "help":
+            result =
+              "You love helping others! Healthcare, teaching, or counseling could be a great fit.";
+            break;
+          case "manage":
+            result =
+              "You have leadership qualities! Management, entrepreneurship, or administration may suit you.";
+            break;
+          default:
+            result =
+              "You have a unique mix of interests! Explore more to find your perfect path.";
+        }
+
+        document.getElementById("quizResult").innerText = result;
+      };
+    </script>
+  </body>
+</html>

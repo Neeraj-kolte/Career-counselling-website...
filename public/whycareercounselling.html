@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Why Career Counselling? | CareerCounselling</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", Arial, sans-serif;
+        background: linear-gradient(120deg, #6a11cb 0%, #43e97b 100%);
+        color: #232946;
+        min-height: 100vh;
+      }
+      /* Google Fonts Import (add in <head> of your HTML too) */
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap");
+
+      /* Reset & Base */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Montserrat", "Poppins", Arial, sans-serif;
+        background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+        color: #232946;
+        min-height: 100vh;
+        letter-spacing: 0.03em;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.18);
+      }
+      .logo {
+        font-weight: 900;
+        font-size: 2.1rem;
+        color: #7f5af0;
+        letter-spacing: 2px;
+        font-family: "Montserrat", sans-serif;
+        text-shadow: 0 2px 8px #d1d9ff66;
+      }
+      .nav-links {
+        display: flex;
+        gap: 22px;
+        list-style: none;
+      }
+      .nav-links li a {
+        color: #7f5af0;
+        text-decoration: none;
+        font-weight: 700;
+        padding: 9px 18px;
+        border-radius: 10px;
+        transition: background 0.25s, color 0.25s;
+        font-size: 1.08rem;
+      }
+      .nav-links li a:hover {
+        background: #7f5af0;
+        color: #fff;
+      }
+      .auth-btns .login-btn {
+        border: 2px solid #7f5af0;
+        padding: 6px 18px;
+        background: transparent;
+        border-radius: 10px;
+        color: #7f5af0;
+        font-weight: 700;
+        transition: background 0.3s, color 0.3s;
+      }
+      .auth-btns .login-btn:hover {
+        background: #7f5af0;
+        color: #fff;
+      }
+      .auth-btns .signup-btn {
+        background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+        color: #232946;
+        padding: 8px 22px;
+        font-weight: 900;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px #43e97b33;
+        border: none;
+        margin-left: 4px;
+        transition: box-shadow 0.3s, background 0.3s, color 0.3s;
+      }
+      .auth-btns .signup-btn:hover {
+        background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
+        color: #fff;
+        box-shadow: 0 8px 32px #43e97b55;
+      }
+
+      /* Mobile menu icon */
+      .menu-icon {
+        display: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #7f5af0;
+      }
+
+      .menu-icon {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: white;
+      }
+      @media (max-width: 768px) {
+        nav.navbar ul.nav-links {
+          display: none;
+          flex-direction: column;
+          background: #3f37c9;
+          position: absolute;
+          top: 60px;
+          right: 30px;
+          width: 180px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(74, 58, 255, 0.4);
+        }
+        nav.navbar ul.nav-links.show {
+          display: flex;
+        }
+        .menu-icon {
+          display: block;
+        }
+      }
+
+      .why-hero {
+        padding: 60px 20px 30px 20px;
+        text-align: center;
+        background: linear-gradient(100deg, #ffb347 0%, #43e97b 100%);
+        color: #232946;
+        border-bottom-left-radius: 50px 20px;
+        border-bottom-right-radius: 50px 20px;
+        box-shadow: 0 8px 32px rgba(74, 58, 255, 0.09);
+      }
+      .why-hero h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+      }
+      .why-hero p {
+        font-size: 1.18rem;
+        color: #232946bb;
+        margin-bottom: 0;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .benefits-section {
+        max-width: 1100px;
+        margin: 40px auto 30px auto;
+        padding: 0 20px;
+      }
+      .benefits-title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 34px;
+        color: #4a3aff;
+        letter-spacing: 1px;
+      }
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 34px;
+      }
+      .benefit-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 32px 24px;
+        box-shadow: 0 8px 32px rgba(74, 58, 255, 0.13);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        transition: transform 0.2s, box-shadow 0.2s;
+        min-height: 220px;
+        animation: fadeInUp 0.7s;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .benefit-card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 18px 40px #43e97b33;
+      }
+      .benefit-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        margin-bottom: 18px;
+        background: #f8f8ff;
+        box-shadow: 0 2px 10px #6a11cb18;
+      }
+      .benefit-card h3 {
+        margin: 0 0 10px 0;
+        font-size: 1.13rem;
+        font-weight: 700;
+        color: #4a3aff;
+        text-align: center;
+      }
+      .benefit-card p {
+        color: #444;
+        font-size: 1.04rem;
+        text-align: center;
+        margin: 0;
+      }
+
+      .quote-section {
+        text-align: center;
+        margin: 50px 0 30px 0;
+      }
+      .quote-section blockquote {
+        font-size: 1.3rem;
+        color: #232946;
+        font-style: italic;
+        background: #f8f8ff;
+        border-left: 5px solid #43e97b;
+        border-radius: 12px;
+        display: inline-block;
+        padding: 22px 28px;
+        max-width: 700px;
+        margin: 0 auto;
+        box-shadow: 0 4px 24px #43e97b18;
+      }
+
+      /* Responsive */
+      @media (max-width: 600px) {
+        .why-hero {
+          padding: 36px 8px 18px 8px;
+        }
+        .benefits-section {
+          padding: 0 8px;
+        }
+        .benefits-title {
+          font-size: 1.3rem;
+        }
+        .benefit-card {
+          padding: 18px 8px;
+          min-height: 150px;
+        }
+        .quote-section blockquote {
+          font-size: 1.05rem;
+          padding: 14px 10px;
+        }
+      }
+
+      /* Footer */
+      footer.footer {
+        background: #3f37c9;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        box-shadow: 0 -4px 12px rgba(74, 58, 255, 0.2);
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">CareerCounselling</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <!-- <li><a href="howitworks.html">How It Works</a></li> -->
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li class="auth-btns" id="loginNav">
+          <a href="login.html" class="login-btn">Login</a>
+        </li>
+        <li class="auth-btns" id="signupNav">
+          <a href="register.html" class="signup-btn">Sign Up</a>
+        </li>
+      </ul>
+      <div class="menu-icon" id="menuToggle">☰</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="why-hero">
+      <h1>Why Career Counselling?</h1>
+      <p>
+        Career counselling empowers students to make informed, confident choices
+        about their future. With so many courses, careers, and opportunities,
+        expert guidance helps you find the path that fits you best.
+      </p>
+    </section>
+
+    <!-- Benefits Section (Dynamic) -->
+    <section class="benefits-section">
+      <div class="benefits-title">How Career Counselling Helps You</div>
+      <div class="benefits-grid" id="benefitsGrid">
+        <!-- Cards will be injected by JS -->
+      </div>
+    </section>
+
+    <!-- Inspiring Quote -->
+    <div class="quote-section">
+      <blockquote>
+        “The future depends on what you do today.”<br />
+        <span style="font-size: 1rem; color: #4a3aff">- Mahatma Gandhi</span>
+      </blockquote>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-bottom">
+        <p>© 2025 CareerCounselling. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Dynamic benefits data
+      const benefits = [
+        {
+          icon: `<img src="https://img.icons8.com/ios-filled/48/ffb347/brainstorm-skill.png" alt="Self Discovery"/>`,
+          title: "Self-Discovery",
+          desc: "Understand your interests, strengths, and personality to make better career decisions.",
+        },
+        {
+          icon: `<img src="https://img.icons8.com/ios-filled/48/43e97b/goal.png" alt="Goal Setting"/>`,
+          title: "Goal Setting",
+          desc: "Set realistic, achievable goals with the help of expert career counselors.",
+        },
+        {
+          icon: `<img src="https://img.icons8.com/ios-filled/48/4a3aff/decision.png" alt="Informed Choices"/>`,
+          title: "Informed Choices",
+          desc: "Get clarity about courses, colleges, and career options that truly suit you.",
+        },
+        {
+          icon: `<img src="https://img.icons8.com/ios-filled/48/ff6961/handshake.png" alt="Reduce Stress"/>`,
+          title: "Reduce Stress",
+          desc: "Avoid confusion and anxiety by following a clear, personalized career roadmap.",
+        },
+        {
+          icon: `<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Expert Guidance" width="48" height="48"/>`,
+          title: "Expert Guidance",
+          desc: "Connect with experienced mentors and counselors for practical advice and support.",
+        },
+        {
+          icon: `<img src="https://img.icons8.com/ios-filled/48/fdfd96/rocket.png" alt="Confidence"/>`,
+          title: "Confidence",
+          desc: "Move ahead with confidence, knowing you’re on the right track for your future.",
+        },
+      ];
+
+      function renderBenefits() {
+        const grid = document.getElementById("benefitsGrid");
+        grid.innerHTML = "";
+        benefits.forEach((benefit) => {
+          const card = document.createElement("div");
+          card.className = "benefit-card";
+          card.innerHTML = `
+          <div class="benefit-icon">${benefit.icon}</div>
+          <h3>${benefit.title}</h3>
+          <p>${benefit.desc}</p>
+        `;
+          grid.appendChild(card);
+        });
+      }
+      renderBenefits();
+
+      // Responsive Navbar Menu (Mobile)
+      document.getElementById("menuToggle").onclick = function () {
+        document.getElementById("navLinks").classList.toggle("show");
+      };
+    </script>
+  </body>
+</html>

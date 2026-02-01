@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Profile | CareerCounselling</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../dashboard.css" />
+    <link rel="stylesheet" href="profile.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">CareerCounselling</div>
+      <ul class="nav-links">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="assessment/newassessment.html">Take Assessment</a></li>
+        <li><a href="profile.html" class="active">Profile</a></li>
+        <li>
+          <a href="index.html"><button class="logout">Logout</button></a>
+        </li>
+      </ul>
+    </nav>
+    <main class="profile-main">
+      <div class="profile-header">
+        <div class="profile-avatar" id="profile-avatar">U</div>
+        <div>
+          <h2 id="profile-name"></h2>
+          <div id="profile-role" style="color: #43e97b; font-weight: 700"></div>
+        </div>
+      </div>
+      <div class="profile-info">
+        <p><b>Email:</b> <span id="profile-email"></span></p>
+        <p><b>Phone:</b> <span id="profile-phone"></span></p>
+        <p><b>Registered:</b> <span id="profile-date"></span></p>
+      </div>
+      <div class="profile-section">
+        <h3>Your Latest Assessment</h3>
+        <div id="latest-assessment"></div>
+        <button
+          class="profile-btn"
+          onclick="window.location.href='../assessment/newassessment.html'"
+        >
+          Retake Assessment
+        </button>
+      </div>
+      <div class="profile-section assessment-history">
+        <h3>Assessment History</h3>
+        <div id="assessment-history"></div>
+      </div>
+      <button class="profile-btn logout-btn" onclick="logoutUser()">
+        Logout
+      </button>
+    </main>
+    <script src="newprofile.js"></script>
+  </body>
+</html>

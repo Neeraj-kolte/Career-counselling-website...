@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How It Works | CareerCounselling</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", Arial, sans-serif;
+        background: linear-gradient(120deg, #6a11cb 0%, #43e97b 100%);
+        color: #232946;
+        min-height: 100vh;
+      }
+      /* Google Fonts Import (add in <head> of your HTML too) */
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap");
+
+      /* Reset & Base */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Montserrat", "Poppins", Arial, sans-serif;
+        background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+        color: #232946;
+        min-height: 100vh;
+        letter-spacing: 0.03em;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.18);
+      }
+      .logo {
+        font-weight: 900;
+        font-size: 2.1rem;
+        color: #7f5af0;
+        letter-spacing: 2px;
+        font-family: "Montserrat", sans-serif;
+        text-shadow: 0 2px 8px #d1d9ff66;
+      }
+      .nav-links {
+        display: flex;
+        gap: 22px;
+        list-style: none;
+      }
+      .nav-links li a {
+        color: #7f5af0;
+        text-decoration: none;
+        font-weight: 700;
+        padding: 9px 18px;
+        border-radius: 10px;
+        transition: background 0.25s, color 0.25s;
+        font-size: 1.08rem;
+      }
+      .nav-links li a:hover {
+        background: #7f5af0;
+        color: #fff;
+      }
+      .auth-btns .login-btn {
+        border: 2px solid #7f5af0;
+        padding: 6px 18px;
+        background: transparent;
+        border-radius: 10px;
+        color: #7f5af0;
+        font-weight: 700;
+        transition: background 0.3s, color 0.3s;
+      }
+      .auth-btns .login-btn:hover {
+        background: #7f5af0;
+        color: #fff;
+      }
+      .auth-btns .signup-btn {
+        background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+        color: #232946;
+        padding: 8px 22px;
+        font-weight: 900;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px #43e97b33;
+        border: none;
+        margin-left: 4px;
+        transition: box-shadow 0.3s, background 0.3s, color 0.3s;
+      }
+      .auth-btns .signup-btn:hover {
+        background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
+        color: #fff;
+        box-shadow: 0 8px 32px #43e97b55;
+      }
+
+      /* Mobile menu icon */
+      .menu-icon {
+        display: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #7f5af0;
+      }
+
+      .menu-icon {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: white;
+      }
+      @media (max-width: 768px) {
+        nav.navbar ul.nav-links {
+          display: none;
+          flex-direction: column;
+          background: #3f37c9;
+          position: absolute;
+          top: 60px;
+          right: 30px;
+          width: 180px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(74, 58, 255, 0.4);
+        }
+        nav.navbar ul.nav-links.show {
+          display: flex;
+        }
+        .menu-icon {
+          display: block;
+        }
+      }
+
+      .how-hero {
+        padding: 60px 20px 30px 20px;
+        text-align: center;
+        background: linear-gradient(100deg, #43e97b 0%, #38f9d7 100%);
+        color: #232946;
+        border-bottom-left-radius: 50px 20px;
+        border-bottom-right-radius: 50px 20px;
+        box-shadow: 0 8px 32px rgba(74, 58, 255, 0.09);
+      }
+      .how-hero h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+      }
+      .how-hero p {
+        font-size: 1.18rem;
+        color: #232946bb;
+        margin-bottom: 0;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .steps-section {
+        max-width: 1100px;
+        margin: 40px auto 30px auto;
+        padding: 0 20px;
+      }
+      .steps-title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 34px;
+        color: #4a3aff;
+        letter-spacing: 1px;
+      }
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 34px;
+      }
+      .step-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 32px 24px;
+        box-shadow: 0 8px 32px rgba(74, 58, 255, 0.13);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        transition: transform 0.2s, box-shadow 0.2s;
+        min-height: 270px;
+        animation: fadeInUp 0.7s;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .step-card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 18px 40px #43e97b33;
+      }
+      .step-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        margin-bottom: 18px;
+        background: #f8f8ff;
+        box-shadow: 0 2px 10px #6a11cb18;
+      }
+      .step-number {
+        position: absolute;
+        top: 18px;
+        right: 22px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #43e97b;
+        opacity: 0.5;
+      }
+      .step-card h3 {
+        margin: 0 0 10px 0;
+        font-size: 1.18rem;
+        font-weight: 700;
+        color: #4a3aff;
+        text-align: center;
+      }
+      .step-card p {
+        color: #444;
+        font-size: 1.05rem;
+        text-align: center;
+        margin: 0;
+      }
+      .step-card .step-link {
+        margin-top: 18px;
+        color: #43e97b;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 1.01rem;
+        transition: color 0.2s;
+      }
+      .step-card .step-link:hover {
+        color: #4a3aff;
+        text-decoration: underline;
+      }
+
+      /* Responsive */
+      @media (max-width: 600px) {
+        .how-hero {
+          padding: 36px 8px 18px 8px;
+        }
+        .steps-section {
+          padding: 0 8px;
+        }
+        .steps-title {
+          font-size: 1.3rem;
+        }
+        .step-card {
+          padding: 18px 8px;
+          min-height: 180px;
+        }
+      }
+
+      /* Footer */
+      footer.footer {
+        background: #3f37c9;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        box-shadow: 0 -4px 12px rgba(74, 58, 255, 0.2);
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">CareerCounselling</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <!-- <li><a href="how-it-works.html" class="active">How It Works</a></li> -->
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li class="auth-btns" id="loginNav">
+          <a href="login.html" class="login-btn">Login</a>
+        </li>
+        <li class="auth-btns" id="signupNav">
+          <a href="register.html" class="signup-btn">Sign Up</a>
+        </li>
+      </ul>
+      <div class="menu-icon" id="menuToggle">☰</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="how-hero">
+      <h1>How CareerCounselling Works</h1>
+      <p>
+        CareerCounselling guides you step-by-step from self-discovery to
+        confident career decisions. Our process is designed for students, by
+        students, as part of a college minor project.
+      </p>
+    </section>
+
+    <!-- Steps Section (Dynamic) -->
+    <section class="steps-section">
+      <div class="steps-title">Our Simple 4-Step Process</div>
+      <div class="steps-grid" id="stepsGrid">
+        <!-- Steps will be injected by JS -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-bottom">
+        <p>© 2025 CareerCounselling. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Steps Data (Dynamic)
+      const steps = [
+        {
+          icon: `<img src="https://img.icons8.com/ios-filled/48/4a3aff/brain.png" alt="Self Assessment"/>`,
+          title: "1. Self Assessment",
+          desc: "Take our interactive assessment to discover your interests, strengths, and personality traits.",
+          link: "sampleselfassessment.html",
+          linkText: "Try Assessment",
+        },
+        {
+          icon: `<img src="https://img.icons8.com/ios-filled/48/43e97b/books.png" alt="Explore Careers"/>`,
+          title: "2. Explore Careers",
+          desc: "Browse detailed information about various career paths, required skills, and future scope.",
+          link: "careeroption.html",
+          linkText: "Explore Careers",
+        },
+        {
+          icon: `<img src="https://img.icons8.com/ios-filled/48/ffb347/teacher.png" alt="Connect with Mentors"/>`,
+          title: "3. Connect with Mentors",
+          desc: "Book a session with verified mentors or counselors for personalized guidance and advice.",
+          link: "connectwithmentors.html",
+          linkText: "Find a Mentor",
+        },
+        {
+          icon: `<img src="https://img.icons8.com/ios-filled/48/ff6961/goal.png" alt="Take Action"/>`,
+          title: "4. Take Action",
+          desc: "Get your personalized career roadmap and start working towards your goals with confidence.",
+          link: "register.html",
+          linkText: "Get Started",
+        },
+      ];
+
+      function renderSteps() {
+        const grid = document.getElementById("stepsGrid");
+        grid.innerHTML = "";
+        steps.forEach((step, i) => {
+          const card = document.createElement("div");
+          card.className = "step-card";
+          card.innerHTML = `
+          <div class="step-icon">${step.icon}</div>
+          <div class="step-number">Step ${i + 1}</div>
+          <h3>${step.title}</h3>
+          <p>${step.desc}</p>
+          <a class="step-link" href="${step.link}">${step.linkText} &rarr;</a>
+        `;
+          grid.appendChild(card);
+        });
+      }
+      renderSteps();
+
+      // Responsive Navbar Menu (Mobile)
+      document.getElementById("menuToggle").onclick = function () {
+        document.getElementById("navLinks").classList.toggle("show");
+      };
+    </script>
+  </body>
+</html>

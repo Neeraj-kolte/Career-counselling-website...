@@ -1,0 +1,15 @@
+# Environment / secrets
+.env
+project.env
+backend/project.env
+public/chatbot/.env
+
+# Node
+node_modules/
+
+# Build
+dist/
+build/
+
+# System
+.DS_Store

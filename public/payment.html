@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment Demo</title>
+</head>
+<body>
+  <h2>Pay Counsellor</h2>
+  <form id="payForm">
+    <input type="text" name="cardHolder" placeholder="Aapka Naam" required /><br>
+    <input type="number" name="amount" placeholder="Kitna Paisa" required /><br>
+    <button type="submit">Pay</button>
+  </form>
+  <div id="status"></div>
+  <ul id="counsellorRequests"></ul>
+
+  <script>
+    // Counsellor requests yahin dikhayenge
+    const requests = [];
+
+    document.getElementById('payForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        cardNumber: "1234123412341234", // dummy data
+        cardHolder: form.cardHolder.value,
+        expiry: "12/25",
+        cvv: "123",
+        amount: form.amount.value
+      };
+
+      // Yeh message fake payment gateway ko bhej raha hai
+      const res = await fetch('http://localhost:5100/api/v1/payment/card', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        document.getElementById('status').innerText = "Payment Success!";
+        // Counsellor ko request bhejo (yahan list me dikhayenge)
+        requests.push({ name: data.cardHolder, amount: data.amount });
+        showRequests();
+      } else {
+        document.getElementById('status').innerText = "Payment Failed!";
+      }
+    };
+
+    function showRequests() {
+      const ul = document.getElementById('counsellorRequests');
+      ul.innerHTML = "";
+      requests.forEach(req => {
+        const li = document.createElement('li');
+        li.innerText = `Naam: ${req.name}, Amount: ₹${req.amount}`;
+        ul.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>

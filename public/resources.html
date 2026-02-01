@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career Resources | CareerCounselling</title>
+    <link rel="stylesheet" href="resources.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- ...navbar unchanged... -->
+    <nav class="navbar">
+      <div class="logo">CareerCounselling</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="indexfeature.html">Students</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li class="auth-btns" id="loginNav">
+          <a href="login.html" class="login-btn">Login</a>
+        </li>
+        <li class="auth-btns" id="signupNav">
+          <a href="register.html" class="signup-btn">Sign Up</a>
+        </li>
+      </ul>
+      <div class="menu-icon" id="menuToggle">☰</div>
+    </nav>
+
+    <div class="resource-hero">
+      <h1>Career Resources</h1>
+      <p>Explore guides, videos, and articles to boost your career journey.</p>
+    </div>
+    <div class="resource-container">
+      <div class="resource-filters">
+        <select id="studentTypeFilter">
+          <option value="">Select Student Type</option>
+          <option value="school">School Student</option>
+          <option value="college">College Student</option>
+          <option value="dropout">Dropout</option>
+          <option value="government">Government Job Aspirant</option>
+        </select>
+        <select id="classFilter" style="display: none"></select>
+        <select id="streamFilter" style="display: none"></select>
+        <input
+          id="ageInput"
+          type="number"
+          min="10"
+          max="40"
+          placeholder="Enter Age"
+          style="display: none; width: 120px"
+        />
+        <select id="entranceFilter" style="display: none"></select>
+        <select id="needFilter" style="display: none"></select>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="🔍 Search resources..."
+          style="flex: 1; min-width: 180px"
+        />
+        <select id="categoryFilter">
+          <option value="all">All Categories</option>
+          <option value="pdf">PDF Guides</option>
+          <option value="video">Video Lectures</option>
+          <option value="article">Articles</option>
+        </select>
+      </div>
+      <div class="resource-list" id="resourceList"></div>
+    </div>
+
+    <!-- Resource Detail Modal -->
+    <div id="resourceModal" class="resource-modal" style="display: none">
+      <div class="resource-modal-content" id="resourceModalContent">
+        <!-- JS will fill this -->
+      </div>
+    </div>
+
+    <footer class="footer">
+      <!-- ...footer unchanged... -->
+      <div class="footer-content">
+        <div class="footer-left">
+          <h3>CareerCounselling</h3>
+          <p>
+            Your one-stop platform for career guidance, resources, and support.
+          </p>
+        </div>
+        <div class="footer-middle">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="career-options.html">Careers</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-right">
+          <h4>Connect</h4>
+          <p>Email: support@CareerCounselling.com</p>
+          <p>Phone: +91 98765 43210</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 CareerCounselling. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="resources.js"></script>
+  </body>
+</html>

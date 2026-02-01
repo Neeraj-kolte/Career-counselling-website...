@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Counsellor Dashboard | CareerCounselling</title>
+    <link rel="stylesheet" href="dashboard-counsellor.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo" style="cursor: pointer">CareerCounselling</div>
+      <ul class="nav-links">
+        <li>
+          <a href="#" id="reports-link"
+            ><i class="fas fa-chart-bar"></i> Reports</a
+          >
+        </li>
+        <li>
+          <a href="login.html"><button class="logout">Logout</button></a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Stats Overview -->
+    <section class="stats-overview" id="stats-overview">
+      <div class="stat-card">
+        <div class="stat-icon bg-blue"><i class="fas fa-inbox"></i></div>
+        <div>
+          <div class="stat-number" id="stat-total">0</div>
+          <div class="stat-label">Total Requests</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon bg-green">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <div>
+          <div class="stat-number" id="stat-accepted">0</div>
+          <div class="stat-label">Accepted</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon bg-yellow">
+          <i class="fas fa-hourglass-half"></i>
+        </div>
+        <div>
+          <div class="stat-number" id="stat-pending">0</div>
+          <div class="stat-label">Pending</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon bg-red"><i class="fas fa-times-circle"></i></div>
+        <div>
+          <div class="stat-number" id="stat-declined">0</div>
+          <div class="stat-label">Declined</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile Card -->
+    <section class="counsellor-profile-card" id="profile-section">
+      <div class="profile-avatar" id="profile-avatar">C</div>
+      <div class="profile-info">
+        <h2 id="profile-fullname"></h2>
+        <div class="profile-details">
+          <span id="profile-email"></span>
+          <span id="profile-phone"></span>
+        </div>
+        <form id="profile-form">
+          <div class="profile-form-row">
+            <label>UPI ID:</label>
+            <input type="text" id="counsellor-upi" required />
+          </div>
+          <div class="profile-form-row">
+            <label>Fees (₹):</label>
+            <input type="number" id="counsellor-fees" required min="0" />
+          </div>
+          <button type="submit">
+            <i class="fas fa-save"></i> Save Profile
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Request Analytics Card -->
+    <div class="card analytics-card" id="analytics-section">
+      <h2 style="color: var(--primary)">Request Analytics</h2>
+      <canvas id="requestChart" width="350" height="200"></canvas>
+    </div>
+
+    <!-- Requests Section -->
+    <section class="counsellor-requests" id="requests-section">
+      <div class="requests-header">
+        <h3>Counselling Requests</h3>
+        <select id="request-filter" onchange="filterRequests()">
+          <option value="all">All</option>
+          <option value="pending">Pending</option>
+          <option value="accepted">Accepted</option>
+          <option value="declined">Declined</option>
+        </select>
+      </div>
+      <div id="requests-list"></div>
+    </section>
+
+    <!-- Reports & Analytics Card (Hidden by default) -->
+    <div
+      class="card analytics-card"
+      id="reports-section"
+      style="display: none; max-width: 700px; margin: 40px auto"
+    >
+      <h2 style="color: var(--primary); text-align: center">
+        Reports & Analytics
+      </h2>
+
+      <!-- Earnings Summary -->
+      <div style="margin-bottom: 24px">
+        <h3 style="color: var(--secondary); margin-bottom: 8px">
+          Earnings Summary
+        </h3>
+        <p><b>Total Earnings:</b> ₹<span id="total-earnings">0</span></p>
+        <canvas id="earningsChart" height="120"></canvas>
+      </div>
+
+      <!-- Requests Table -->
+      <div>
+        <h3 style="color: var(--secondary); margin-bottom: 8px">
+          All Requests
+        </h3>
+        <div style="overflow-x: auto">
+          <table style="width: 100%; border-collapse: collapse">
+            <thead>
+              <tr style="background: #f3eafe">
+                <th style="padding: 8px">Student</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Fees (₹)</th>
+              </tr>
+            </thead>
+            <tbody id="requests-report-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email Modal -->
+    <div id="email-modal">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeEmailModal()">&times;</span>
+        <h2>Send Email</h2>
+        <form id="emailForm">
+          <input type="hidden" id="toEmail" />
+          <div>
+            <label>Subject:</label>
+            <input id="subject" type="text" required />
+          </div>
+          <div>
+            <label>Message:</label>
+            <textarea id="message" rows="5" required></textarea>
+          </div>
+          <button type="submit">
+            <i class="fas fa-paper-plane"></i> Send Email
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard-counsellor.js"></script>
+
+    <script>
+      // Reports toggle logic
+      document.addEventListener("DOMContentLoaded", function () {
+        const reportsLink = document.getElementById("reports-link");
+        const logo = document.querySelector(".logo");
+
+        reportsLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          // Hide dashboard sections
+          document.getElementById("stats-overview").style.display = "none";
+          document.getElementById("profile-section").style.display = "none";
+          document.getElementById("analytics-section").style.display = "none";
+          document.getElementById("requests-section").style.display = "none";
+          // Show reports
+          document.getElementById("reports-section").style.display = "block";
+          document
+            .getElementById("reports-section")
+            .scrollIntoView({ behavior: "smooth" });
+        });
+
+        logo.addEventListener("click", function () {
+          // Show dashboard sections
+          document.getElementById("stats-overview").style.display = "";
+          document.getElementById("profile-section").style.display = "";
+          document.getElementById("analytics-section").style.display = "";
+          document.getElementById("requests-section").style.display = "";
+          // Hide reports
+          document.getElementById("reports-section").style.display = "none";
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+    </script>
+  </body>
+</html>

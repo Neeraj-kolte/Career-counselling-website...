@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="profile.css" />
+  </head>
+  <body>
+    <div class="profile-container">
+      <h1>User Profile</h1>
+
+      <div class="profile-box">
+        <div class="profile-header">
+          <img
+            src="https://via.placeholder.com/100"
+            alt="Profile"
+            class="profile-img"
+          />
+          <div>
+            <h2>Welcome, <span id="username">User</span> 👋</h2>
+            <p>Email: <span id="email">user@example.com</span></p>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button class="btn edit-btn">Edit Profile</button>
+          <button class="btn logout-btn" onclick="logout()">Logout</button>
+        </div>
+      </div>
+
+      <div class="quiz-result">
+        <h3>Career Quiz Result:</h3>
+        <p id="quizResult">Not taken yet.</p>
+      </div>
+
+      <div class="saved-careers">
+        <h3>Saved Careers:</h3>
+        <ul id="savedCareers">
+          <li>Software Developer</li>
+          <li>UI/UX Designer</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Edit Profile Modal -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Edit Profile</h2>
+        <form id="editForm">
+          <label for="editName">Name:</label>
+          <input type="text" id="editName" required />
+
+          <label for="editEmail">Email:</label>
+          <input type="email" id="editEmail" required />
+
+          <button type="submit" class="btn save-btn">Save Changes</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="profile.js"></script>
+  </body>
+</html>

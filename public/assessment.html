@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career Assessment</title>
+    <link rel="stylesheet" href="assessment.css" />
+  </head>
+  <body>
+    <div class="assessment-container">
+      <h1>Career Assessment</h1>
+      <p class="intro">
+        Answer the questions honestly to discover careers that might suit you.
+      </p>
+
+      <div class="progress-container">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <form id="assessmentForm">
+        <div class="question">
+          <p>1. What kind of activities do you enjoy the most?</p>
+          <label
+            ><input
+              type="radio"
+              name="q1"
+              value="tech"
+              onclick="updateProgress()"
+            />
+            Solving logical problems</label
+          ><br />
+          <label
+            ><input
+              type="radio"
+              name="q1"
+              value="creative"
+              onclick="updateProgress()"
+            />
+            Drawing or designing things</label
+          ><br />
+          <label
+            ><input
+              type="radio"
+              name="q1"
+              value="social"
+              onclick="updateProgress()"
+            />
+            Helping others with their problems</label
+          ><br />
+        </div>
+
+        <div class="question">
+          <p>2. Which school subject do you like the most?</p>
+          <label
+            ><input
+              type="radio"
+              name="q2"
+              value="tech"
+              onclick="updateProgress()"
+            />
+            Mathematics / Computer Science</label
+          ><br />
+          <label
+            ><input
+              type="radio"
+              name="q2"
+              value="creative"
+              onclick="updateProgress()"
+            />
+            Art / Literature</label
+          ><br />
+          <label
+            ><input
+              type="radio"
+              name="q2"
+              value="social"
+              onclick="updateProgress()"
+            />
+            Psychology / Sociology</label
+          ><br />
+        </div>
+
+        <div class="question">
+          <p>3. What would you prefer?</p>
+          <label
+            ><input
+              type="radio"
+              name="q3"
+              value="tech"
+              onclick="updateProgress()"
+            />
+            Building websites or apps</label
+          ><br />
+          <label
+            ><input
+              type="radio"
+              name="q3"
+              value="creative"
+              onclick="updateProgress()"
+            />
+            Making digital art</label
+          ><br />
+          <label
+            ><input
+              type="radio"
+              name="q3"
+              value="social"
+              onclick="updateProgress()"
+            />
+            Working with communities</label
+          ><br />
+        </div>
+        <div class="question">
+          <p>4. What kind of work environment do you prefer?</p>
+          <label
+            ><input
+              type="radio"
+              name="q4"
+              value="tech"
+              onclick="updateProgress()"
+            />
+            A quiet space with computers</label
+          ><br />
+          <label
+            ><input
+              type="radio"
+              name="q4"
+              value="creative"
+              onclick="updateProgress()"
+            />
+            A colorful, creative studio</label
+          ><br />
+          <label
+            ><input
+              type="radio"
+              name="q4"
+              value="social"
+              onclick="updateProgress()"
+            />
+            A buzzing place with people</label
+          ><br />
+        </div>
+
+        <div class="question">
+          <p>5. What kind of tasks do you enjoy?</p>
+          <label
+            ><input
+              type="radio"
+              name="q5"
+              value="tech"
+              onclick="updateProgress()"
+            />
+            Solving puzzles or debugging code</label
+          ><br />
+          <label
+            ><input
+              type="radio"
+              name="q5"
+              value="creative"
+              onclick="updateProgress()"
+            />
+            Writing stories or making designs</label
+          ><br />
+          <label
+            ><input
+              type="radio"
+              name="q5"
+              value="social"
+              onclick="updateProgress()"
+            />
+            Talking, advising, or leading groups</label
+          ><br />
+        </div>
+
+        <div class="question">
+          <p>6. If you had to pick a hobby, which would it be?</p>
+          <label
+            ><input
+              type="radio"
+              name="q6"
+              value="tech"
+              onclick="updateProgress()"
+            />
+            Learning a new programming language</label
+          ><br />
+          <label
+            ><input
+              type="radio"
+              name="q6"
+              value="creative"
+              onclick="updateProgress()"
+            />
+            Photography or painting</label
+          ><br />
+          <label
+            ><input
+              type="radio"
+              name="q6"
+              value="social"
+              onclick="updateProgress()"
+            />
+            Volunteering or organizing events</label
+          ><br />
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+
+      <div id="result" class="result-box"></div>
+    </div>
+
+    <div id="resultModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Your Ideal Career Field Is:</h2>
+        <p id="careerResultText"></p>
+        <button onclick="retakeAssessment()">Retake Assessment</button>
+      </div>
+    </div>
+
+    <script src="assessment.js"></script>
+  </body>
+</html>
